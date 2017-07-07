@@ -1,0 +1,55 @@
+/*实验调研要求	毕业实习环节 周	实验占课题 %	调查研究 周 阅读文献要求*/
+.smallText {
+    width: 30px;
+}
+/*新增/修改用户时，是否管理员样式保持与easyui一致*/
+.radioSpan {
+    position: relative;
+    border: 1px solid #95B8E7;
+    background-color: #fff;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+}
+/*普通的输入名字式的文本框*/
+.plainText{
+    width: 300px;
+}
+.textareaComment{
+    resize: none;
+    width: 350px;
+    height: 100px;
+    max-width: 350px;
+    max-height: 100px;
+}
+.oa_form{
+    margin:0;
+    padding:10px 30px;
+}
+#fm{
+    margin:0;
+    padding:10px 30px;
+}
+.ftitle{
+    font-size:14px;
+    font-weight:bold;
+    color:#666;
+    padding:5px 0;
+    margin-bottom:10px;
+    border-bottom:1px solid #ccc;
+}
+.fitem{
+    margin-bottom:5px;
+}
+.fitem label{
+    display:inline-block;
+    width:80px;
+}
+
