@@ -24,4 +24,12 @@ public class Page {
     public void setPage(int page) {
         this.page = page;
     }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "rows=" + rows +
+                ", page=" + page +
+                '}';
+    }
 }

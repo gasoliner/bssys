@@ -21,4 +21,6 @@ public interface SystemDDLService {
     public void delete(String uuid);
 
     public BsSystemddl getDDLNameByDDLCode(String keyword,Integer DDLCode);
+
+    public String getYesOrNoByZeroOrOne(Integer temp);
 }

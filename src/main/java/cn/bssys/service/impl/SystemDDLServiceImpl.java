@@ -66,4 +66,14 @@ public class SystemDDLServiceImpl implements SystemDDLService {
             return null;
         }
     }
+
+    @Override
+    public String getYesOrNoByZeroOrOne(Integer temp) {
+        if(temp==0){
+            return "否";
+        }else{
+            return "是";
+        }
+
+    }
 }
