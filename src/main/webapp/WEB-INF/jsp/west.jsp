@@ -98,8 +98,8 @@
                         <li>
                             <span>用户管理</span>
                             <ul>
-                                <li data-options="attributes:{'url':''}">教师管理</li>
-                                <li data-options="attributes:{'url':''}">学生管理</li>
+                                <li data-options="attributes:{'url':'sys_user_teacher'}">教师管理</li>
+                                <li data-options="attributes:{'url':'sys_user_student'}">学生管理</li>
                             </ul>
                         </li>
                     </shiro:hasPermission>

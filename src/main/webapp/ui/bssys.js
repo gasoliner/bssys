@@ -291,3 +291,45 @@ function answerTP() {
         alert(res);
     })
 }
+//学生
+function newStu(){
+    $("#fm").form("clear");
+    $("#stuDialog").dialog("open").dialog("setTitle","学生管理--新建");
+    url = "/student/addition";
+}
+function editStu(){
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $("#stuDialog").dialog("open").dialog("setTitle","学生管理--编辑");
+        $("#fm").form("clear");
+        $("#fm").form("load",row);
+        url = "/student/updates/"+row.sid;
+    }
+}
+function destroyStu(){
+    var row = $("#dg").datagrid("getSelected");
+    if (row){
+        $.messager.confirm("Confirm","确定要删除这条记录吗",function (r) {
+            if (r){
+                $("#dfm").form("submit",{
+                    url:"/student/deletion/"+row.sid,
+                    success: function (res) {
+                        alert(res);
+                        $("#stuDialog").dialog("close");
+                        $("#dg").datagrid("reload")
+                    }
+                })
+            }
+        })
+    }
+}
+function saveStu(){
+    $("#fm").form("submit",{
+        url:url,
+        success: function (res) {
+            alert(res);
+            $("#stuDialog").dialog("close");
+            $("#dg").datagrid("reload");
+        }
+    })
+}
