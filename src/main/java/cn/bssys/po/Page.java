@@ -25,11 +25,5 @@ public class Page {
         this.page = page;
     }
 
-    @Override
-    public String toString() {
-        return "Page{" +
-                "rows=" + rows +
-                ", page=" + page +
-                '}';
-    }
+
 }

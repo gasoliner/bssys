@@ -17,4 +17,6 @@ public interface StudentService {
     public int update(BsStudent bsStudent);
 
     public int delete(int sid);
+
+    public long getTotal();
 }

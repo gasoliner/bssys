@@ -9,14 +9,14 @@ public class VoStudent extends BsStudent {
     private String  voClazz;
     private String voMajor;
     private String voCollege;
-    private String voIsChoose;
+    private String voIschoose;
 
-    public String getVoIsChoose() {
-        return voIsChoose;
+    public String getVoIschoose() {
+        return voIschoose;
     }
 
-    public void setVoIsChoose(String voIsChoose) {
-        this.voIsChoose = voIsChoose;
+    public void setVoIschoose(String voIschoose) {
+        this.voIschoose = voIschoose;
     }
 
     public String getVoClazz() {

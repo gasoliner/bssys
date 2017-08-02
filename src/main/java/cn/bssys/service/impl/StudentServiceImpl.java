@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,7 +21,9 @@ import java.util.List;
  */
 @Service("studentService")
  public class StudentServiceImpl implements StudentService {
-   public long total;
+
+    public long total;
+
     @Autowired
     BsStudentMapper bsStudentMapper;
     @Autowired
@@ -30,10 +31,12 @@ import java.util.List;
 
     @Override
     public List<VoStudent> getList(Page page) {
+
        PageHelper.startPage(page.getPage(),page.getRows());
 
         BsStudentExample bsStudentExample = new BsStudentExample();
         List<BsStudent> bsStudentList = bsStudentMapper.selectByExample(bsStudentExample);
+
 
         PageInfo<BsStudent> pageInfo = new PageInfo<>(bsStudentList);
         this.total = pageInfo.getTotal();
@@ -49,11 +52,10 @@ import java.util.List;
             voStudent.setName(bsStudent.getName());
             voStudent.setGrade(bsStudent.getGrade());
             voStudent.setDegree(bsStudent.getDegree());
-            voStudent.setIschoose(bsStudent.getIschoose());
+            voStudent.setVoIschoose(systemDDLService.getYesOrNoByZeroOrOne(bsStudent.getIschoose()));
             voStudentList.add(voStudent);
         }
-
-        return voStudentList;
+      return voStudentList;
     }
 
     @Override
@@ -70,4 +72,10 @@ import java.util.List;
     public int delete(int sid) {
         return bsStudentMapper.deleteByPrimaryKey(sid);
     }
+
+    @Override
+    public long getTotal() {
+        return total;
+    }
+
 }
