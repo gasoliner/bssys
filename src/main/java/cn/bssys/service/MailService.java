@@ -10,5 +10,5 @@ import javax.mail.Session;
  */
 public interface MailService {
 
-    public Message sendEamil(Email email);
+    public boolean sendEamil(Email email);
 }

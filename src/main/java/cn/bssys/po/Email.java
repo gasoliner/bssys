@@ -1,5 +1,6 @@
 package cn.bssys.po;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -65,5 +66,17 @@ public class Email {
 
     public void setSendDate(Date sendDate) {
         this.sendDate = sendDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Email{" +
+                "recipient=" + Arrays.toString(recipient) +
+                ", sender='" + sender + '\'' +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                ", attachment='" + attachment + '\'' +
+                ", sendDate=" + sendDate +
+                '}';
     }
 }

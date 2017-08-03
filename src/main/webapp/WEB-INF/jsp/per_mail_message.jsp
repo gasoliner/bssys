@@ -60,7 +60,7 @@
                 <br/>
             </td>
             <td>
-                <textarea style="resize: none;width: 80%;height: 320px;max-width: 100%;max-height: 500px;"></textarea>
+                <textarea name="content" style="resize: none;width: 80%;height: 320px;max-width: 100%;max-height: 500px;"></textarea>
                 <br/>
             </td>
         </tr>
