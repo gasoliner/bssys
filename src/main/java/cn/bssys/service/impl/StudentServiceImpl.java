@@ -20,7 +20,7 @@ import java.util.List;
  * Created by LENOVO on 2017/8/1.
  */
 @Service("studentService")
- public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl implements StudentService {
 
     public long total;
 
@@ -31,23 +31,23 @@ import java.util.List;
 
     @Override
     public List<VoStudent> getList(Page page) {
-
-       PageHelper.startPage(page.getPage(),page.getRows());
-
+//        设置分页
+        PageHelper.startPage(page.getPage(), page.getRows());
+//        创建查询规则
         BsStudentExample bsStudentExample = new BsStudentExample();
+//        查询
         List<BsStudent> bsStudentList = bsStudentMapper.selectByExample(bsStudentExample);
-
-
+//        获取查询信息
         PageInfo<BsStudent> pageInfo = new PageInfo<>(bsStudentList);
         this.total = pageInfo.getTotal();
-
+//        vo化
         List<VoStudent> voStudentList = new ArrayList<>();
-        for(BsStudent bsStudent :
-                bsStudentList){
+        for (BsStudent bsStudent :
+                bsStudentList) {
             VoStudent voStudent = new VoStudent();
             voStudent.setSid(bsStudent.getSid());
-            voStudent.setVoMajor(systemDDLService.getDDLNameByDDLCode("major",bsStudent.getMajor()).getDdlname());
-            voStudent.setVoClazz(systemDDLService.getDDLNameByDDLCode("clazz",bsStudent.getClazz()).getDdlname());
+            voStudent.setVoMajor(systemDDLService.getDDLNameByDDLCode("major", bsStudent.getMajor()).getDdlname());
+            voStudent.setVoClazz(systemDDLService.getDDLNameByDDLCode("clazz", bsStudent.getClazz()).getDdlname());
             voStudent.setNumber(bsStudent.getNumber());
             voStudent.setName(bsStudent.getName());
             voStudent.setGrade(bsStudent.getGrade());
@@ -55,7 +55,7 @@ import java.util.List;
             voStudent.setVoIschoose(systemDDLService.getYesOrNoByZeroOrOne(bsStudent.getIschoose()));
             voStudentList.add(voStudent);
         }
-      return voStudentList;
+        return voStudentList;
     }
 
     @Override
@@ -65,7 +65,7 @@ import java.util.List;
 
     @Override
     public int update(BsStudent bsStudent) {
-        return  bsStudentMapper.updateByPrimaryKeySelective(bsStudent);
+        return bsStudentMapper.updateByPrimaryKeySelective(bsStudent);
     }
 
     @Override
