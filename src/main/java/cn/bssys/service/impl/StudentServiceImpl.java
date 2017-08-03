@@ -93,4 +93,9 @@ public class StudentServiceImpl implements StudentService {
         return voStudentList;
     }
 
+    @Override
+    public VoStudent getObjectByPrimaryKey(int id) {
+        return new VoStudent(bsStudentMapper.selectByPrimaryKey(id));
+    }
+
 }

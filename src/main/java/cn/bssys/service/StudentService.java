@@ -20,5 +20,7 @@ public interface StudentService {
 
     public long getTotal();
 
-    List<VoStudent> getStudentByTid(Integer tid);
+    public List<VoStudent> getStudentByTid(Integer tid);
+
+    public VoStudent getObjectByPrimaryKey(int id);
 }

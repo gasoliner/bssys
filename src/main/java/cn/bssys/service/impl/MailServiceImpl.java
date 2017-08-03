@@ -25,6 +25,7 @@ import java.util.Properties;
 
     @Override
     public boolean sendEamil(Email email) {
+
         return true;
     }
 }

@@ -32,7 +32,7 @@
             </td>
             <td>
                 <input class="easyui-combobox" style="width: 55%"
-                       name="sender"
+                       name="recipient"
                        data-options="
 					url:'/student/tid/133',
 					method:'get',
