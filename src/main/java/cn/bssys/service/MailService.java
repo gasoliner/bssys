@@ -8,7 +8,11 @@ import javax.mail.Session;
 /**
  * Created by LENOVO on 2017/8/3.
  */
-public interface MailService {
+public interface MailService  {
 
-    public boolean sendEamil(Email email);
+
+    public boolean sendEamil(Email email) ;
+
+
+
 }

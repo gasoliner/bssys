@@ -3,6 +3,7 @@ package cn.bssys.controller;
 import cn.bssys.po.Email;
 import cn.bssys.service.MailService;
 import cn.bssys.service.StudentService;
+import cn.bssys.service.impl.MailServiceImpl;
 import cn.bssys.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,25 +21,21 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping(value = "/mail",produces = {"application/json;charset=UTF-8"} )
 public class MailController {
-
     @Autowired
     MailService mailService;
-
     @Autowired
     StudentService studentService;
 
     @RequestMapping("/send")
     @ResponseBody
-    public String sendEmail(Email email, @RequestParam(value = "file",required = false)CommonsMultipartFile file, HttpServletRequest request){
+    public String sendEmail(Email email, @RequestParam(value = "file",required = false)CommonsMultipartFile file, HttpServletRequest request) throws Exception {
         if (!file.isEmpty()){
             email.setAttachment(PageUtil.uploadAnnex(request,file,"cache","email_attachment"));
         }
-        System.out.println(email);
-        System.out.println(email.getRecipient().length);
         for (int i = 0;i < email.getRecipient().length;i++){
             email.getRecipient()[i] = studentService.getObjectByPrimaryKey(Integer.parseInt(email.getRecipient()[i])).getEmail();
         }
-        System.out.println(email);
+
         if (mailService.sendEamil(email)){
             return JSON.toJSONString("发送成功");
         }else {

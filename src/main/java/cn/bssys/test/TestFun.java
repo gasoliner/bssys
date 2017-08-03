@@ -4,7 +4,12 @@ import cn.bssys.util.PageUtil;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
+import javax.mail.Session;
+import javax.mail.Transport;
 import java.io.File;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Properties;
 import java.util.UUID;
 
 /**
@@ -12,15 +17,15 @@ import java.util.UUID;
  */
 public class TestFun {
     @Test
-    public void testFun1(){
+    public void testFun1() throws Exception{
         System.out.println(UUID.randomUUID().toString());
+
 
         int length = 6;
 
         for (int i = 0; i < length; i++){
             System.out.println(i);
         }
-
 
 //        String path = "F://test/hhhhhh.txt";
 //        String fileName = "F://kk.txt";
@@ -30,5 +35,9 @@ public class TestFun {
 //            e.printStackTrace();
 //        }
 
+
+
+
+          //  ts.connect(prop.getProperty("mail.host"), prop.getProperty("mail.username"), prop.getProperty("mail.password"));
     }
 }
