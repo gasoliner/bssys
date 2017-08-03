@@ -11,6 +11,27 @@ public class VoStudent extends BsStudent {
     private String voCollege;
     private String voIschoose;
 
+    public VoStudent() {
+    }
+    
+    public VoStudent(BsStudent student) {
+        this.setClazz(student.getClazz());
+        this.setCollege(student.getCollege());
+        this.setDegree(student.getDegree());
+        this.setEmail(student.getEmail());
+        this.setGrade(student.getGrade());
+        this.setIschoose(student.getIschoose());
+        this.setMajor(student.getMajor());
+        this.setName(student.getName());
+        this.setNumber(student.getNumber());
+        this.setPassword(student.getPassword());
+        this.setPhone(student.getPhone());
+        this.setStrongpoint(student.getStrongpoint());
+        this.setSid(student.getSid());
+        this.setTid(student.getTid());
+        this.setTopid(student.getTopid());
+    }
+
     public String getVoIschoose() {
         return voIschoose;
     }

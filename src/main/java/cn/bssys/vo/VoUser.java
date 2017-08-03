@@ -7,6 +7,10 @@ import cn.bssys.po.BsUser;
  */
 public class VoUser extends BsUser {
 
+    private String voDep;
+
+    private String voSex;
+
     public VoUser() {
     }
 
@@ -31,5 +35,21 @@ public class VoUser extends BsUser {
         this.setSex(user.getSex());
         this.setUsername(user.getUsername());
         this.setUid(user.getUid());
+    }
+
+    public String getVoDep() {
+        return voDep;
+    }
+
+    public void setVoDep(String voDep) {
+        this.voDep = voDep;
+    }
+
+    public String getVoSex() {
+        return voSex;
+    }
+
+    public void setVoSex(String voSex) {
+        this.voSex = voSex;
     }
 }

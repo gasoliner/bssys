@@ -19,4 +19,6 @@ public interface StudentService {
     public int delete(int sid);
 
     public long getTotal();
+
+    List<VoStudent> getStudentByTid(Integer tid);
 }

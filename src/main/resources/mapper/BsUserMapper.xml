@@ -14,8 +14,8 @@
     <result column="locked" jdbcType="BIT" property="locked" />
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="major" jdbcType="VARCHAR" property="major" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="major" jdbcType="INTEGER" property="major" />
+    <result column="title" jdbcType="INTEGER" property="title" />
     <result column="question" jdbcType="VARCHAR" property="question" />
     <result column="answer" jdbcType="VARCHAR" property="answer" />
     <result column="direction" jdbcType="VARCHAR" property="direction" />
@@ -126,8 +126,8 @@
     values (#{uid,jdbcType=BIGINT}, #{employeenum,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER}, 
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{roleidsstr,jdbcType=VARCHAR}, 
-      #{locked,jdbcType=BIT}, #{role,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      #{locked,jdbcType=BIT}, #{role,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, 
+      #{title,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
       #{direction,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{defensetime,jdbcType=VARCHAR}, 
       #{defenseplace,jdbcType=VARCHAR})
   </insert>
@@ -233,10 +233,10 @@
         #{sex,jdbcType=INTEGER},
       </if>
       <if test="major != null">
-        #{major,jdbcType=VARCHAR},
+        #{major,jdbcType=INTEGER},
       </if>
       <if test="title != null">
-        #{title,jdbcType=VARCHAR},
+        #{title,jdbcType=INTEGER},
       </if>
       <if test="question != null">
         #{question,jdbcType=VARCHAR},
@@ -304,10 +304,10 @@
         sex = #{record.sex,jdbcType=INTEGER},
       </if>
       <if test="record.major != null">
-        major = #{record.major,jdbcType=VARCHAR},
+        major = #{record.major,jdbcType=INTEGER},
       </if>
       <if test="record.title != null">
-        title = #{record.title,jdbcType=VARCHAR},
+        title = #{record.title,jdbcType=INTEGER},
       </if>
       <if test="record.question != null">
         question = #{record.question,jdbcType=VARCHAR},
@@ -346,8 +346,8 @@
       locked = #{record.locked,jdbcType=BIT},
       role = #{record.role,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=INTEGER},
-      major = #{record.major,jdbcType=VARCHAR},
-      title = #{record.title,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=INTEGER},
       question = #{record.question,jdbcType=VARCHAR},
       answer = #{record.answer,jdbcType=VARCHAR},
       direction = #{record.direction,jdbcType=VARCHAR},
@@ -395,10 +395,10 @@
         sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="major != null">
-        major = #{major,jdbcType=VARCHAR},
+        major = #{major,jdbcType=INTEGER},
       </if>
       <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
+        title = #{title,jdbcType=INTEGER},
       </if>
       <if test="question != null">
         question = #{question,jdbcType=VARCHAR},
@@ -434,8 +434,8 @@
       locked = #{locked,jdbcType=BIT},
       role = #{role,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
-      major = #{major,jdbcType=VARCHAR},
-      title = #{title,jdbcType=VARCHAR},
+      major = #{major,jdbcType=INTEGER},
+      title = #{title,jdbcType=INTEGER},
       question = #{question,jdbcType=VARCHAR},
       answer = #{answer,jdbcType=VARCHAR},
       direction = #{direction,jdbcType=VARCHAR},

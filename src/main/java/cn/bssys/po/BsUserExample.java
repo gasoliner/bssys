@@ -914,62 +914,52 @@ public class BsUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andMajorEqualTo(String value) {
+        public Criteria andMajorEqualTo(Integer value) {
             addCriterion("major =", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorNotEqualTo(String value) {
+        public Criteria andMajorNotEqualTo(Integer value) {
             addCriterion("major <>", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorGreaterThan(String value) {
+        public Criteria andMajorGreaterThan(Integer value) {
             addCriterion("major >", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorGreaterThanOrEqualTo(String value) {
+        public Criteria andMajorGreaterThanOrEqualTo(Integer value) {
             addCriterion("major >=", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorLessThan(String value) {
+        public Criteria andMajorLessThan(Integer value) {
             addCriterion("major <", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorLessThanOrEqualTo(String value) {
+        public Criteria andMajorLessThanOrEqualTo(Integer value) {
             addCriterion("major <=", value, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorLike(String value) {
-            addCriterion("major like", value, "major");
-            return (Criteria) this;
-        }
-
-        public Criteria andMajorNotLike(String value) {
-            addCriterion("major not like", value, "major");
-            return (Criteria) this;
-        }
-
-        public Criteria andMajorIn(List<String> values) {
+        public Criteria andMajorIn(List<Integer> values) {
             addCriterion("major in", values, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorNotIn(List<String> values) {
+        public Criteria andMajorNotIn(List<Integer> values) {
             addCriterion("major not in", values, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorBetween(String value1, String value2) {
+        public Criteria andMajorBetween(Integer value1, Integer value2) {
             addCriterion("major between", value1, value2, "major");
             return (Criteria) this;
         }
 
-        public Criteria andMajorNotBetween(String value1, String value2) {
+        public Criteria andMajorNotBetween(Integer value1, Integer value2) {
             addCriterion("major not between", value1, value2, "major");
             return (Criteria) this;
         }
@@ -984,62 +974,52 @@ public class BsUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andTitleEqualTo(String value) {
+        public Criteria andTitleEqualTo(Integer value) {
             addCriterion("title =", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleNotEqualTo(String value) {
+        public Criteria andTitleNotEqualTo(Integer value) {
             addCriterion("title <>", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleGreaterThan(String value) {
+        public Criteria andTitleGreaterThan(Integer value) {
             addCriterion("title >", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleGreaterThanOrEqualTo(String value) {
+        public Criteria andTitleGreaterThanOrEqualTo(Integer value) {
             addCriterion("title >=", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleLessThan(String value) {
+        public Criteria andTitleLessThan(Integer value) {
             addCriterion("title <", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleLessThanOrEqualTo(String value) {
+        public Criteria andTitleLessThanOrEqualTo(Integer value) {
             addCriterion("title <=", value, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleLike(String value) {
-            addCriterion("title like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleNotLike(String value) {
-            addCriterion("title not like", value, "title");
-            return (Criteria) this;
-        }
-
-        public Criteria andTitleIn(List<String> values) {
+        public Criteria andTitleIn(List<Integer> values) {
             addCriterion("title in", values, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleNotIn(List<String> values) {
+        public Criteria andTitleNotIn(List<Integer> values) {
             addCriterion("title not in", values, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleBetween(String value1, String value2) {
+        public Criteria andTitleBetween(Integer value1, Integer value2) {
             addCriterion("title between", value1, value2, "title");
             return (Criteria) this;
         }
 
-        public Criteria andTitleNotBetween(String value1, String value2) {
+        public Criteria andTitleNotBetween(Integer value1, Integer value2) {
             addCriterion("title not between", value1, value2, "title");
             return (Criteria) this;
         }

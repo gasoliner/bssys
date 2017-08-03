@@ -49,7 +49,7 @@
                 <li>
                     <span>邮件管理</span>
                     <ul>
-                        <li data-options="attributes:{'url':''}">给同学留言</li>
+                        <li data-options="attributes:{'url':'per_mail_message'}">给同学留言</li>
                         <li data-options="attributes:{'url':''}">收件箱</li>
                         <li data-options="attributes:{'url':''}">发件箱</li>
                     </ul>

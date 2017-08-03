@@ -25,9 +25,9 @@ public class BsUser {
 
     private Integer sex;
 
-    private String major;
+    private Integer major;
 
-    private String title;
+    private Integer title;
 
     private String question;
 
@@ -137,20 +137,20 @@ public class BsUser {
         this.sex = sex;
     }
 
-    public String getMajor() {
+    public Integer getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
-        this.major = major == null ? null : major.trim();
+    public void setMajor(Integer major) {
+        this.major = major;
     }
 
-    public String getTitle() {
+    public Integer getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
+    public void setTitle(Integer title) {
+        this.title = title;
     }
 
     public String getQuestion() {

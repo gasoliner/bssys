@@ -53,3 +53,28 @@
     width:80px;
 }
 
+/*通用的表格*/
+table {
+
+    border: 1px solid #777;
+
+}
+
+tr,td {
+
+    padding: .65em;
+
+}
+
+tr {
+
+    border: 1px solid #777;
+
+}
+
+td {
+
+    border: 1px solid#777;
+
+}
+

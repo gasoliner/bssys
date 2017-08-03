@@ -4,6 +4,7 @@ import cn.bssys.po.BsStudent;
 import cn.bssys.po.DataGrid;
 import cn.bssys.po.Page;
 import cn.bssys.service.StudentService;
+import cn.bssys.service.UserService;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,5 +68,11 @@ public class StudentController {
         } catch (Exception e) {
             return JSON.toJSONString("操作失败");
         }
+    }
+
+    @RequestMapping("/tid/{tid}")
+    @ResponseBody
+    public String getStuByTid(@PathVariable Integer tid){
+        return JSON.toJSONString(studentService.getStudentByTid(tid));
     }
 }

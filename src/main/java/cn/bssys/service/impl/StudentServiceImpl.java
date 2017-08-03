@@ -78,4 +78,19 @@ import java.util.List;
         return total;
     }
 
+    @Override
+    public List<VoStudent> getStudentByTid(Integer tid) {
+        BsStudentExample studentExample = new BsStudentExample();
+        BsStudentExample.Criteria criteria = studentExample.createCriteria();
+        criteria.andTidEqualTo(tid);
+        List<BsStudent> studentList = bsStudentMapper.selectByExample(studentExample);
+        List<VoStudent> voStudentList = new ArrayList<>();
+        for (BsStudent student:
+                studentList){
+            VoStudent voStudent = new VoStudent(student);
+            voStudentList.add(voStudent);
+        }
+        return voStudentList;
+    }
+
 }
