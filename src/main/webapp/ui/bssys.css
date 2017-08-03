@@ -56,25 +56,26 @@
 /*通用的表格*/
 table {
 
-    border: 1px solid #777;
-
+    border: thin #777;
+    font-size: 14px;
 }
 
 tr,td {
 
-    padding: .65em;
+    padding: .55em;
 
 }
 
 tr {
 
-    border: 1px solid #777;
-
+    /*border: thin #777;*/
+    border-bottom: thin #777;
 }
 
 td {
 
-    border: 1px solid#777;
+    /*border: 1px solid #777;*/
+    border-bottom: thin #777;
 
 }
 

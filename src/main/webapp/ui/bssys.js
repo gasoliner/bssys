@@ -333,3 +333,12 @@ function saveStu(){
         }
     })
 }
+//发送邮件事件
+function sendEmail() {
+    $("#mailForm").form("submit",{
+        url:"/mail/send",
+        success: function (res) {
+            alert(res);
+        }
+    })
+}

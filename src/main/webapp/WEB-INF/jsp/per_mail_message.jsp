@@ -18,20 +18,20 @@
     <script type="text/javascript" src="/ui/bssys.js"></script>
 </head>
 <body>
-<form action="/mail/send" method="post" enctype="multipart/form-data">
-    <table class="commonTable" style="width:100%;" cellpadding="2" cellspacing="0" bordercolor="#000000">
+<form id="mailForm" method="post" enctype="multipart/form-data">
+    <table class="commonTable" style="width:90%;background-color: #dffff4" cellpadding="2" cellspacing="0" bordercolor="#777">
         <tbody>
         <tr>
-            <td colspan="2" style="text-align:center;background-color:#60D978;">发送信息<br/>
+            <td colspan="2" style="text-align:center;">发送信息<br/>
             </td>
         </tr>
         <tr>
-            <td>
+            <td style="width: 15%">
                 发送对象
                 <br/>
             </td>
             <td>
-                <input class="easyui-combobox"
+                <input class="easyui-combobox" style="width: 55%"
                        name="sender"
                        data-options="
 					url:'/student/tid/133',
@@ -50,7 +50,7 @@
                 <br/>
             </td>
             <td>
-                <input type="text" name="subject">
+                <input type="text" name="subject" class="plainText" style="width: 55%">
                 <br/>
             </td>
         </tr>
@@ -60,7 +60,7 @@
                 <br/>
             </td>
             <td>
-                <textarea class="textareaComment" style=""></textarea>
+                <textarea style="resize: none;width: 80%;height: 320px;max-width: 100%;max-height: 500px;"></textarea>
                 <br/>
             </td>
         </tr>
@@ -75,8 +75,10 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <input type="submit" value="发送">
+            <td colspan="2" align="center">
+                <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="sendEmail()">
+                    <span style="font-size: 14px">发送</span>
+                </a>
                 <br/>
             </td>
         </tr>
