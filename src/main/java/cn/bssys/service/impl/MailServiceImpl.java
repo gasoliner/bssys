@@ -35,21 +35,7 @@ import java.util.Properties;
         prop = new Properties();
         InputStream in = this.getClass().getResourceAsStream("/mail.properties");
         prop.load(in);
-       /* session = Session.getInstance(prop);
-        session.setDebug(true);
-        ts = session.getTransport();
-//       ts.connect(host, username, password);
-//      163邮箱connect方法，第三个参数应该是授权码，而不是密码.
-        String host = prop.getProperty("host");
-        String username = prop.getProperty("username");
-        String password = prop.getProperty("password");
-        ts.connect(host, username, password);
-        //ts.connect("smtp.163.com", "17864307797", "liulihui123");
-        *//*创建邮件
-        Message message = sendEamil(session);
-        发送邮件
-        ts.sendMessage(message, message.getAllRecipients());
-        ts.close();*/
+
     }
 
     public void connect()throws Exception{
