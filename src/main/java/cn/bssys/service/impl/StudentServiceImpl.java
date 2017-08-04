@@ -1,8 +1,10 @@
 package cn.bssys.service.impl;
 
 import cn.bssys.mapper.BsStudentMapper;
+import cn.bssys.mapper.BsTopicMapper;
 import cn.bssys.po.BsStudent;
 import cn.bssys.po.BsStudentExample;
+import cn.bssys.po.FrontQueryResult;
 import cn.bssys.po.Page;
 import cn.bssys.service.StudentService;
 import cn.bssys.service.SystemDDLService;
@@ -14,13 +16,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by LENOVO on 2017/8/1.
  */
-@Service("studentService")
-public class StudentServiceImpl implements StudentService {
+ @Service("studentService")
+ public class StudentServiceImpl implements StudentService {
 
     public long total;
 
@@ -28,6 +31,8 @@ public class StudentServiceImpl implements StudentService {
     BsStudentMapper bsStudentMapper;
     @Autowired
     SystemDDLService systemDDLService;
+    @Autowired
+    BsTopicMapper bsTopicMapper;
 
     @Override
     public List<VoStudent> getList(Page page) {
@@ -96,6 +101,26 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public VoStudent getObjectByPrimaryKey(int id) {
         return new VoStudent(bsStudentMapper.selectByPrimaryKey(id));
+    }
+
+    @Override
+    public List<FrontQueryResult> myStudentList(Integer tid) {
+        List<VoStudent> studentList = getStudentByTid(tid);
+        List<FrontQueryResult> frontQueryResultList = new ArrayList<>();
+         for(VoStudent student :
+                 studentList){
+             FrontQueryResult frontQueryResult = new FrontQueryResult();
+             frontQueryResult.setVar1(student.getNumber());
+             frontQueryResult.setVar2(student.getName());
+             frontQueryResult.setVar3(bsTopicMapper.selectTopNameByTid(student.getTopid()));
+             frontQueryResult.setVar4(systemDDLService.getDDLNameByDDLCode("clazz",student.getClazz()).getDdlname());
+             frontQueryResult.setVar5(student.getPhone());
+             frontQueryResult.setVar6(student.getEmail());
+             frontQueryResult.setVar7(student.getStrongpoint());
+             frontQueryResultList.add(frontQueryResult);
+         }
+        System.out.println(frontQueryResultList);
+        return frontQueryResultList;
     }
 
 }

@@ -6,6 +6,8 @@ import cn.bssys.po.Page;
 import cn.bssys.service.StudentService;
 import cn.bssys.service.UserService;
 import com.alibaba.fastjson.JSON;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,4 +77,12 @@ public class StudentController {
     public String getStuByTid(@PathVariable Integer tid){
         return JSON.toJSONString(studentService.getStudentByTid(tid));
     }
+
+
+    @RequestMapping("/mine/{tid}")
+    @ResponseBody
+    public String getStudentList(@PathVariable Integer tid){
+        return  JSON.toJSONString(studentService.myStudentList(tid));
+    }
+
 }

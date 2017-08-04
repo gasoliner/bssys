@@ -24,7 +24,7 @@
                     <span>课题相关查询</span>
                     <ul>
                         <li data-options="attributes:{'url':'tp_2_defenseGroup'}">答辩分组查询</li>
-                        <li data-options="attributes:{'url':''}">我的学生名单</li>
+                        <li data-options="attributes:{'url':'tp_1_myStudent'}">我的学生名单</li>
                     </ul>
                 </li>
                 <li>

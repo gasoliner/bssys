@@ -27,4 +27,6 @@ public interface BsTopicMapper {
     int updateByPrimaryKeySelective(BsTopic record);
 
     int updateByPrimaryKey(BsTopic record);
+
+    String selectTopNameByTid(Integer toid);
 }

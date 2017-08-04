@@ -509,4 +509,9 @@
       state = #{state,jdbcType=INTEGER}
     where toid = #{toid,jdbcType=INTEGER}
   </update>
+  
+  <!--自己写-->
+  <select id="selectTopNameByTid" parameterType="Integer" resultType="String">
+    select name from bs_topic where toid = #{VALUE }
+  </select>
 </mapper>
