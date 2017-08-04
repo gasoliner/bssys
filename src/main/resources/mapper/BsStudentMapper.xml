@@ -17,6 +17,7 @@
     <result column="tid" jdbcType="INTEGER" property="tid" />
     <result column="strongpoint" jdbcType="VARCHAR" property="strongpoint" />
     <result column="topid" jdbcType="INTEGER" property="topid" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +79,7 @@
   </sql>
   <sql id="Base_Column_List">
     sid, name, number, grade, degree, ischoose, password, clazz, major, college, email, 
-    phone, tid, strongpoint, topid
+    phone, tid, strongpoint, topid, salt
   </sql>
   <select id="selectByExample" parameterType="cn.bssys.po.BsStudentExample" resultMap="BaseResultMap">
     select
@@ -115,14 +116,14 @@
       grade, degree, ischoose, 
       password, clazz, major, 
       college, email, phone, 
-      tid, strongpoint, topid
-      )
+      tid, strongpoint, topid, 
+      salt)
     values (#{sid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
       #{grade,jdbcType=VARCHAR}, #{degree,jdbcType=VARCHAR}, #{ischoose,jdbcType=INTEGER}, 
       #{password,jdbcType=VARCHAR}, #{clazz,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, 
       #{college,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{tid,jdbcType=INTEGER}, #{strongpoint,jdbcType=VARCHAR}, #{topid,jdbcType=INTEGER}
-      )
+      #{tid,jdbcType=INTEGER}, #{strongpoint,jdbcType=VARCHAR}, #{topid,jdbcType=INTEGER}, 
+      #{salt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.bssys.po.BsStudent">
     insert into bs_student
@@ -172,6 +173,9 @@
       <if test="topid != null">
         topid,
       </if>
+      <if test="salt != null">
+        salt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="sid != null">
@@ -218,6 +222,9 @@
       </if>
       <if test="topid != null">
         #{topid,jdbcType=INTEGER},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -275,6 +282,9 @@
       <if test="record.topid != null">
         topid = #{record.topid,jdbcType=INTEGER},
       </if>
+      <if test="record.salt != null">
+        salt = #{record.salt,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -296,7 +306,8 @@
       phone = #{record.phone,jdbcType=VARCHAR},
       tid = #{record.tid,jdbcType=INTEGER},
       strongpoint = #{record.strongpoint,jdbcType=VARCHAR},
-      topid = #{record.topid,jdbcType=INTEGER}
+      topid = #{record.topid,jdbcType=INTEGER},
+      salt = #{record.salt,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -346,6 +357,9 @@
       <if test="topid != null">
         topid = #{topid,jdbcType=INTEGER},
       </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
     </set>
     where sid = #{sid,jdbcType=INTEGER}
   </update>
@@ -364,7 +378,8 @@
       phone = #{phone,jdbcType=VARCHAR},
       tid = #{tid,jdbcType=INTEGER},
       strongpoint = #{strongpoint,jdbcType=VARCHAR},
-      topid = #{topid,jdbcType=INTEGER}
+      topid = #{topid,jdbcType=INTEGER},
+      salt = #{salt,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
 </mapper>
