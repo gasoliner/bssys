@@ -31,6 +31,8 @@ public class BsStudent {
 
     private Integer topid;
 
+    private String salt;
+
     public Integer getSid() {
         return sid;
     }
@@ -149,5 +151,13 @@ public class BsStudent {
 
     public void setTopid(Integer topid) {
         this.topid = topid;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
     }
 }
