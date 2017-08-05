@@ -46,10 +46,10 @@
 </div>
 <div id="userDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#userForm-buttons">
-    <div class="ftitle">教师信息</div>
+    <div class="ftitle">教师信息(注：红色为必填)</div>
     <form id="fm" method="post">
         <div class="fitem">
-            <label>系别&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
+            <label class="requiredLabel">系别&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
             <input name="deptid"
                    class="easyui-combobox"
                    data-options="
@@ -59,34 +59,64 @@
                            url:'${pageContext.request.contextPath}/systemddl/list/dep'" />
         </div><br/>
         <div class="fitem">
-            <label>工号&nbsp;&nbsp;&nbsp;</label>
+            <label class="requiredLabel">工号&nbsp;&nbsp;&nbsp;</label>
             <input name="employeenum" class="easyui-validatebox">
         </div>
         <br/>
         <div class="fitem">
-            <label>姓名&nbsp;&nbsp;&nbsp;</label>
+            <label class="requiredLabel">姓名&nbsp;&nbsp;&nbsp;</label>
             <input name="username" class="easyui-validatebox">
         </div>
         <br/>
         <div class="fitem">
-            <label>权限&nbsp;&nbsp;&nbsp;</label>
+            <label class="requiredLabel">权限&nbsp;&nbsp;&nbsp;</label>
             <input name="role" class="easyui-validatebox">
         </div>
         <br/>
         <div class="fitem">
-            <label>密码&nbsp;&nbsp;&nbsp;</label>
+            <label class="requiredLabel">密码&nbsp;&nbsp;&nbsp;</label>
             <input name="password" class="easyui-validatebox">
         </div>
         <br/>
         <div class="fitem">
-            <label>班级&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
-            <input name="clazz"
+            <label>密码提示问题&nbsp;&nbsp;&nbsp;</label>
+            <input name="question" class="easyui-validatebox">
+        </div>
+        <br/>
+        <div class="fitem">
+            <label>提示问题答案&nbsp;&nbsp;&nbsp;</label>
+            <input name="answer" class="easyui-validatebox">
+        </div>
+        <br/>
+        <div class="fitem">
+            <label class="requiredLabel">性别&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
+            <input name="sex"
                    class="easyui-combobox"
                    data-options="
                            valueField:'ddlcode',
                            textField:'ddlname',
                            width:300,
-                           url:'${pageContext.request.contextPath}/systemddl/list/clazz'" />
+                           url:'${pageContext.request.contextPath}/systemddl/list/sex'" />
+        </div><br/>
+        <div class="fitem">
+            <label>职称&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
+            <input name="title"
+                   class="easyui-combobox"
+                   data-options="
+                           valueField:'ddlcode',
+                           textField:'ddlname',
+                           width:300,
+                           url:'${pageContext.request.contextPath}/systemddl/list/title'" />
+        </div><br/>
+        <div class="fitem">
+            <label class="requiredLabel">教师类别&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
+            <input name="kind"
+                   class="easyui-combobox"
+                   data-options="
+                           valueField:'ddlcode',
+                           textField:'ddlname',
+                           width:300,
+                           url:'${pageContext.request.contextPath}/systemddl/list/kind'" />
         </div><br/>
         <div class="fitem">
             <label>邮箱&nbsp;&nbsp;&nbsp;</label>
@@ -94,13 +124,18 @@
         </div>
         <br/>
         <div class="fitem">
-            <label>手机号&nbsp;&nbsp;&nbsp;</label>
+            <label class="requiredLabel">手机号&nbsp;&nbsp;&nbsp;</label>
             <input name="phone" class="easyui-validatebox">
         </div>
         <br/>
         <div class="fitem">
-            <label>特长&nbsp;&nbsp;&nbsp;</label>
-            <textarea name="strongpoint" class="textareaComment" placeholder="200字以内"></textarea>
+            <label>研究方向&nbsp;&nbsp;&nbsp;</label><div>&nbsp;</div>
+            <input name="direction" class="plainText">
+        </div>
+        <br/>
+        <div class="fitem">
+            <label>备注&nbsp;&nbsp;&nbsp;</label>
+            <textarea name="remarks" class="textareaComment" placeholder="200字以内"></textarea>
         </div>
     </form>
 </div>

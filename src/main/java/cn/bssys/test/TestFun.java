@@ -21,12 +21,6 @@ public class TestFun {
         System.out.println(UUID.randomUUID().toString());
 
 
-        int length = 6;
-
-        for (int i = 0; i < length; i++){
-            System.out.println(i);
-        }
-
 //        String path = "F://test/hhhhhh.txt";
 //        String fileName = "F://kk.txt";
 //        try {

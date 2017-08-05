@@ -1443,6 +1443,66 @@ public class BsUserExample {
             addCriterion("defenseplace not between", value1, value2, "defenseplace");
             return (Criteria) this;
         }
+
+        public Criteria andKindIsNull() {
+            addCriterion("kind is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindIsNotNull() {
+            addCriterion("kind is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindEqualTo(Integer value) {
+            addCriterion("kind =", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotEqualTo(Integer value) {
+            addCriterion("kind <>", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindGreaterThan(Integer value) {
+            addCriterion("kind >", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindGreaterThanOrEqualTo(Integer value) {
+            addCriterion("kind >=", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindLessThan(Integer value) {
+            addCriterion("kind <", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindLessThanOrEqualTo(Integer value) {
+            addCriterion("kind <=", value, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindIn(List<Integer> values) {
+            addCriterion("kind in", values, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotIn(List<Integer> values) {
+            addCriterion("kind not in", values, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindBetween(Integer value1, Integer value2) {
+            addCriterion("kind between", value1, value2, "kind");
+            return (Criteria) this;
+        }
+
+        public Criteria andKindNotBetween(Integer value1, Integer value2) {
+            addCriterion("kind not between", value1, value2, "kind");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
