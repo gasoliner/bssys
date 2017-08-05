@@ -85,4 +85,13 @@ public class StudentController {
         return  JSON.toJSONString(studentService.myStudentList(tid));
     }
 
+    @RequestMapping("/timeplace/{year}")
+    @ResponseBody
+    public String timeplaceList(Page page,int year){
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setTotal(studentService.getTotal());
+        dataGrid.setRows(studentService.timePlaceList(page,year));
+        return JSON.toJSONString(dataGrid);
+    }
+
 }

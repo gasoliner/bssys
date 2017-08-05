@@ -1,5 +1,9 @@
 package cn.bssys.po;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
+import java.util.Date;
+
 public class BsTopic {
     private Integer toid;
 
@@ -48,6 +52,9 @@ public class BsTopic {
     private Integer ischoose;
 
     private Integer state;
+
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date choosetime;
 
     public Integer getToid() {
         return toid;
@@ -239,5 +246,13 @@ public class BsTopic {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Date getChoosetime() {
+        return choosetime;
+    }
+
+    public void setChoosetime(Date choosetime) {
+        this.choosetime = choosetime;
     }
 }

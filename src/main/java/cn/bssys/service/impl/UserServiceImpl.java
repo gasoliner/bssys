@@ -1,14 +1,16 @@
 package cn.bssys.service.impl;
 
+import cn.bssys.mapper.BsTopicMapper;
 import cn.bssys.mapper.BsUserMapper;
-import cn.bssys.po.BsUser;
-import cn.bssys.po.BsUserExample;
-import cn.bssys.po.Page;
+import cn.bssys.po.*;
 import cn.bssys.service.UserService;
 import cn.bssys.vo.VoUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +19,13 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
+    public long total;
     @Autowired
     BsUserMapper userMapper;
+    @Autowired
+    SystemDDLServiceImpl systemDDLService;
+    @Autowired
+    BsTopicMapper bsTopicMapper;
 
     @Override
     public List<VoUser> getList(Page page) {
@@ -40,6 +47,10 @@ public class UserServiceImpl implements UserService {
         userMapper.deleteByPrimaryKey(id);
         return;
     }
+    @Override
+    public long getTotal() {
+        return total;
+    }
 
     @Override
     public BsUser getUserByEmployenum(String employeenum) {
@@ -52,5 +63,32 @@ public class UserServiceImpl implements UserService {
         }else {
             return null;
         }
+    }
+
+    @Override
+    public List<FrontQueryResult> topicCount(Page page,int year) {
+        PageHelper.startPage(page.getPage(), page.getRows());
+        BsUserExample bsUserExample = new BsUserExample();
+        List<BsUser> bsUserList = userMapper.selectByExample(bsUserExample);
+        PageInfo<BsUser> pageInfo = new PageInfo<>(bsUserList);
+        this.total = pageInfo.getTotal();
+        List<FrontQueryResult> frontQueryResultList = new ArrayList<>();
+        for(BsUser bsUser :
+                bsUserList){
+            FrontQueryResult frontQueryResult = new FrontQueryResult();
+            frontQueryResult.setVar1(systemDDLService.getDDLNameByDDLCode("dep",bsUser.getDeptid()).getDdlname());
+            frontQueryResult.setVar2(bsUser.getUsername());
+         //根据年度与老师id 创建查询条件，进行查询
+            BsTopicExample bsTopicExample = new BsTopicExample();
+            BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
+            criteria.andTidEqualTo(Math.toIntExact(bsUser.getUid()));
+            criteria.andYearEqualTo(year);
+            Long count = bsTopicMapper.countByExample(bsTopicExample);
+
+            frontQueryResult.setVar3(String.valueOf(count));
+            frontQueryResultList.add(frontQueryResult);
+        }
+
+        return frontQueryResultList;
     }
 }

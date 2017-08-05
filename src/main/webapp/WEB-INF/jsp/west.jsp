@@ -63,7 +63,7 @@
                     <li>
                         <span>查询统计相关</span>
                         <ul>
-                            <li data-options="attributes:{'url':''}">课题选择情况</li>
+                            <li data-options="attributes:{'url':'tp_4_selectedTopic'}">课题选择情况</li>
                             <li data-options="attributes:{'url':''}">教师课题统计</li>
                             <li data-options="attributes:{'url':''}">指导时间和地点统计</li>
                             <li data-options="attributes:{'url':''}">结合科研实际统计</li>

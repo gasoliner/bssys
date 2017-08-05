@@ -1,6 +1,8 @@
 package cn.bssys.controller;
 
+import cn.bssys.po.DataGrid;
 import cn.bssys.po.Page;
+import cn.bssys.service.StudentService;
 import cn.bssys.service.TopicService;
 import cn.bssys.vo.VoTopic;
 import com.alibaba.fastjson.JSON;
@@ -20,6 +22,8 @@ public class TopicController {
 
     @Autowired
     TopicService topicService;
+    @Autowired
+    StudentService studentService;
 
 
     @RequestMapping("/list/{year}")
@@ -59,4 +63,12 @@ public class TopicController {
         }
     }
 
+    @RequestMapping(value = "/selectedTopic")
+    @ResponseBody
+    public String selectTopic(Page page){
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setTotal(studentService.getTotal());
+        dataGrid.setRows(studentService.selectedTopicList(page));
+        return JSON.toJSONString(dataGrid);
+    }
 }

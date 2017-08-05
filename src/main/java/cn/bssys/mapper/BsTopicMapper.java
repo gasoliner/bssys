@@ -2,8 +2,9 @@ package cn.bssys.mapper;
 
 import cn.bssys.po.BsTopic;
 import cn.bssys.po.BsTopicExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BsTopicMapper {
     long countByExample(BsTopicExample example);
@@ -27,6 +28,4 @@ public interface BsTopicMapper {
     int updateByPrimaryKeySelective(BsTopic record);
 
     int updateByPrimaryKey(BsTopic record);
-
-    String selectTopNameByTid(Integer toid);
 }

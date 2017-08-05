@@ -1,6 +1,7 @@
 package cn.bssys.po;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BsTopicExample {
@@ -1581,6 +1582,66 @@ public class BsTopicExample {
 
         public Criteria andStateNotBetween(Integer value1, Integer value2) {
             addCriterion("state not between", value1, value2, "state");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeIsNull() {
+            addCriterion("choosetime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeIsNotNull() {
+            addCriterion("choosetime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeEqualTo(Date value) {
+            addCriterion("choosetime =", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeNotEqualTo(Date value) {
+            addCriterion("choosetime <>", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeGreaterThan(Date value) {
+            addCriterion("choosetime >", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("choosetime >=", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeLessThan(Date value) {
+            addCriterion("choosetime <", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeLessThanOrEqualTo(Date value) {
+            addCriterion("choosetime <=", value, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeIn(List<Date> values) {
+            addCriterion("choosetime in", values, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeNotIn(List<Date> values) {
+            addCriterion("choosetime not in", values, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeBetween(Date value1, Date value2) {
+            addCriterion("choosetime between", value1, value2, "choosetime");
+            return (Criteria) this;
+        }
+
+        public Criteria andChoosetimeNotBetween(Date value1, Date value2) {
+            addCriterion("choosetime not between", value1, value2, "choosetime");
             return (Criteria) this;
         }
     }

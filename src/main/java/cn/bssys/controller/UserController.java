@@ -1,6 +1,7 @@
 package cn.bssys.controller;
 
 import cn.bssys.po.BsUser;
+import cn.bssys.po.DataGrid;
 import cn.bssys.po.Page;
 import cn.bssys.service.UserService;
 import cn.bssys.util.ContantKey;
@@ -106,6 +107,15 @@ public class UserController {
         }catch (Exception e){
             return JSON.toJSONString("操作失败");
         }
+    }
+
+    @RequestMapping(value = "/passtopic/{year}")
+    @ResponseBody
+    public String passtopic(Page page,@PathVariable int year){
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setTotal(userService.getTotal());
+        dataGrid.setRows(userService.topicCount(page,year));
+        return JSON.toJSONString(dataGrid);
     }
 
 }

@@ -27,4 +27,8 @@ public interface StudentService {
 
     public List<FrontQueryResult> myStudentList(Integer tid);
 
+    public List<FrontQueryResult>  selectedTopicList(Page page);
+
+    public List<FrontQueryResult>   timePlaceList(Page page,int year);
+
 }

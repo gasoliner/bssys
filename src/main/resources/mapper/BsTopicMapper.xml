@@ -26,6 +26,7 @@
     <result column="tid" jdbcType="INTEGER" property="tid" />
     <result column="ischoose" jdbcType="INTEGER" property="ischoose" />
     <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="choosetime" jdbcType="TIMESTAMP" property="choosetime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -86,9 +87,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    toid, college, major, year, name, explaining, category, src, srname, type, comability,
-    handability, gradlink, testpercent, research, ch, en, innovation, total, difficulty,
-    comment, tid, ischoose, state
+    toid, college, major, year, name, explaining, category, src, srname, type, comability, 
+    handability, gradlink, testpercent, research, ch, en, innovation, total, difficulty, 
+    comment, tid, ischoose, state, choosetime
   </sql>
   <select id="selectByExample" parameterType="cn.bssys.po.BsTopicExample" resultMap="BaseResultMap">
     select
@@ -105,7 +106,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from bs_topic
     where toid = #{toid,jdbcType=INTEGER}
@@ -121,24 +122,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.bssys.po.BsTopic">
-    insert into bs_topic (toid, college, major,
-    year, name, explaining,
-    category, src, srname,
-    type, comability, handability,
-    gradlink, testpercent, research,
-    ch, en, innovation,
-    total, difficulty, comment,
-    tid, ischoose, state
-    )
-    values (#{toid,jdbcType=INTEGER}, #{college,jdbcType=INTEGER}, #{major,jdbcType=INTEGER},
-    #{year,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{explaining,jdbcType=VARCHAR},
-    #{category,jdbcType=INTEGER}, #{src,jdbcType=INTEGER}, #{srname,jdbcType=VARCHAR},
-    #{type,jdbcType=INTEGER}, #{comability,jdbcType=INTEGER}, #{handability,jdbcType=INTEGER},
-    #{gradlink,jdbcType=INTEGER}, #{testpercent,jdbcType=DOUBLE}, #{research,jdbcType=INTEGER},
-    #{ch,jdbcType=INTEGER}, #{en,jdbcType=INTEGER}, #{innovation,jdbcType=INTEGER},
-    #{total,jdbcType=INTEGER}, #{difficulty,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR},
-    #{tid,jdbcType=INTEGER}, #{ischoose,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}
-    )
+    insert into bs_topic (toid, college, major, 
+      year, name, explaining, 
+      category, src, srname, 
+      type, comability, handability, 
+      gradlink, testpercent, research, 
+      ch, en, innovation, 
+      total, difficulty, comment, 
+      tid, ischoose, state, 
+      choosetime)
+    values (#{toid,jdbcType=INTEGER}, #{college,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, 
+      #{year,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{explaining,jdbcType=VARCHAR}, 
+      #{category,jdbcType=INTEGER}, #{src,jdbcType=INTEGER}, #{srname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{comability,jdbcType=INTEGER}, #{handability,jdbcType=INTEGER}, 
+      #{gradlink,jdbcType=INTEGER}, #{testpercent,jdbcType=DOUBLE}, #{research,jdbcType=INTEGER}, 
+      #{ch,jdbcType=INTEGER}, #{en,jdbcType=INTEGER}, #{innovation,jdbcType=INTEGER}, 
+      #{total,jdbcType=INTEGER}, #{difficulty,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
+      #{tid,jdbcType=INTEGER}, #{ischoose,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{choosetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.bssys.po.BsTopic">
     insert into bs_topic
@@ -215,6 +216,9 @@
       <if test="state != null">
         state,
       </if>
+      <if test="choosetime != null">
+        choosetime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="toid != null">
@@ -288,6 +292,9 @@
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
+      </if>
+      <if test="choosetime != null">
+        #{choosetime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -372,6 +379,9 @@
       <if test="record.state != null">
         state = #{record.state,jdbcType=INTEGER},
       </if>
+      <if test="record.choosetime != null">
+        choosetime = #{record.choosetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -380,29 +390,30 @@
   <update id="updateByExample" parameterType="map">
     update bs_topic
     set toid = #{record.toid,jdbcType=INTEGER},
-    college = #{record.college,jdbcType=INTEGER},
-    major = #{record.major,jdbcType=INTEGER},
-    year = #{record.year,jdbcType=INTEGER},
-    name = #{record.name,jdbcType=VARCHAR},
-    explaining = #{record.explaining,jdbcType=VARCHAR},
-    category = #{record.category,jdbcType=INTEGER},
-    src = #{record.src,jdbcType=INTEGER},
-    srname = #{record.srname,jdbcType=VARCHAR},
-    type = #{record.type,jdbcType=INTEGER},
-    comability = #{record.comability,jdbcType=INTEGER},
-    handability = #{record.handability,jdbcType=INTEGER},
-    gradlink = #{record.gradlink,jdbcType=INTEGER},
-    testpercent = #{record.testpercent,jdbcType=DOUBLE},
-    research = #{record.research,jdbcType=INTEGER},
-    ch = #{record.ch,jdbcType=INTEGER},
-    en = #{record.en,jdbcType=INTEGER},
-    innovation = #{record.innovation,jdbcType=INTEGER},
-    total = #{record.total,jdbcType=INTEGER},
-    difficulty = #{record.difficulty,jdbcType=INTEGER},
-    comment = #{record.comment,jdbcType=VARCHAR},
-    tid = #{record.tid,jdbcType=INTEGER},
-    ischoose = #{record.ischoose,jdbcType=INTEGER},
-    state = #{record.state,jdbcType=INTEGER}
+      college = #{record.college,jdbcType=INTEGER},
+      major = #{record.major,jdbcType=INTEGER},
+      year = #{record.year,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      explaining = #{record.explaining,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=INTEGER},
+      src = #{record.src,jdbcType=INTEGER},
+      srname = #{record.srname,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      comability = #{record.comability,jdbcType=INTEGER},
+      handability = #{record.handability,jdbcType=INTEGER},
+      gradlink = #{record.gradlink,jdbcType=INTEGER},
+      testpercent = #{record.testpercent,jdbcType=DOUBLE},
+      research = #{record.research,jdbcType=INTEGER},
+      ch = #{record.ch,jdbcType=INTEGER},
+      en = #{record.en,jdbcType=INTEGER},
+      innovation = #{record.innovation,jdbcType=INTEGER},
+      total = #{record.total,jdbcType=INTEGER},
+      difficulty = #{record.difficulty,jdbcType=INTEGER},
+      comment = #{record.comment,jdbcType=VARCHAR},
+      tid = #{record.tid,jdbcType=INTEGER},
+      ischoose = #{record.ischoose,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER},
+      choosetime = #{record.choosetime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -479,6 +490,9 @@
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
       </if>
+      <if test="choosetime != null">
+        choosetime = #{choosetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where toid = #{toid,jdbcType=INTEGER}
   </update>
@@ -506,12 +520,8 @@
       comment = #{comment,jdbcType=VARCHAR},
       tid = #{tid,jdbcType=INTEGER},
       ischoose = #{ischoose,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER}
+      state = #{state,jdbcType=INTEGER},
+      choosetime = #{choosetime,jdbcType=TIMESTAMP}
     where toid = #{toid,jdbcType=INTEGER}
   </update>
-  
-  <!--自己写-->
-  <select id="selectTopNameByTid" parameterType="Integer" resultType="String">
-    select name from bs_topic where toid = #{VALUE }
-  </select>
 </mapper>

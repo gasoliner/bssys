@@ -46,7 +46,7 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editStu()">编辑</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyStu()">删除</a>
 </div>
-<%--<div id="stuDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
+<div id="stuDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#stuForm-buttons">
     <div class="ftitle">学生信息</div>
     <form id="fm" method="post">
@@ -125,6 +125,6 @@
     <form id="dfm" method="post">
         <input type="hidden" name="_method" value="DELETE">
     </form>
-</div>--%>
+</div>
 </body>
 </html>
