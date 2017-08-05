@@ -16,5 +16,6 @@ public interface UserService {
     public int update(VoUser voUser);
     public void delete(Long id);
     public BsUser getUserByEmployenum(String employeenum);
+    public long getTotal();
 
 }

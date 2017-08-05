@@ -41,6 +41,8 @@ public class BsUser {
 
     private String defenseplace;
 
+    private Integer kind;
+
     public Long getUid() {
         return uid;
     }
@@ -199,5 +201,13 @@ public class BsUser {
 
     public void setDefenseplace(String defenseplace) {
         this.defenseplace = defenseplace == null ? null : defenseplace.trim();
+    }
+
+    public Integer getKind() {
+        return kind;
+    }
+
+    public void setKind(Integer kind) {
+        this.kind = kind;
     }
 }

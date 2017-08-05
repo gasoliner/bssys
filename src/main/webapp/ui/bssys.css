@@ -79,3 +79,8 @@ td {
 
 }
 
+/*必填项的类*/
+.requiredLabel {
+    color: #ff061a;
+}
+

@@ -22,6 +22,7 @@
     <result column="remarks" jdbcType="VARCHAR" property="remarks" />
     <result column="defensetime" jdbcType="VARCHAR" property="defensetime" />
     <result column="defenseplace" jdbcType="VARCHAR" property="defenseplace" />
+    <result column="kind" jdbcType="INTEGER" property="kind" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -83,7 +84,8 @@
   </sql>
   <sql id="Base_Column_List">
     uid, employeenum, username, password, salt, deptid, phone, email, roleIdsStr, locked, 
-    role, sex, major, title, question, answer, direction, remarks, defensetime, defenseplace
+    role, sex, major, title, question, answer, direction, remarks, defensetime, defenseplace, 
+    kind
   </sql>
   <select id="selectByExample" parameterType="cn.bssys.po.BsUserExample" resultMap="BaseResultMap">
     select
@@ -122,14 +124,14 @@
       locked, role, sex, major, 
       title, question, answer, 
       direction, remarks, defensetime, 
-      defenseplace)
+      defenseplace, kind)
     values (#{uid,jdbcType=BIGINT}, #{employeenum,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER}, 
       #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{roleidsstr,jdbcType=VARCHAR}, 
       #{locked,jdbcType=BIT}, #{role,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, 
       #{title,jdbcType=INTEGER}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
       #{direction,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{defensetime,jdbcType=VARCHAR}, 
-      #{defenseplace,jdbcType=VARCHAR})
+      #{defenseplace,jdbcType=VARCHAR}, #{kind,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.bssys.po.BsUser">
     insert into bs_user
@@ -194,6 +196,9 @@
       <if test="defenseplace != null">
         defenseplace,
       </if>
+      <if test="kind != null">
+        kind,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -255,6 +260,9 @@
       </if>
       <if test="defenseplace != null">
         #{defenseplace,jdbcType=VARCHAR},
+      </if>
+      <if test="kind != null">
+        #{kind,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -327,6 +335,9 @@
       <if test="record.defenseplace != null">
         defenseplace = #{record.defenseplace,jdbcType=VARCHAR},
       </if>
+      <if test="record.kind != null">
+        kind = #{record.kind,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -353,7 +364,8 @@
       direction = #{record.direction,jdbcType=VARCHAR},
       remarks = #{record.remarks,jdbcType=VARCHAR},
       defensetime = #{record.defensetime,jdbcType=VARCHAR},
-      defenseplace = #{record.defenseplace,jdbcType=VARCHAR}
+      defenseplace = #{record.defenseplace,jdbcType=VARCHAR},
+      kind = #{record.kind,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -418,6 +430,9 @@
       <if test="defenseplace != null">
         defenseplace = #{defenseplace,jdbcType=VARCHAR},
       </if>
+      <if test="kind != null">
+        kind = #{kind,jdbcType=INTEGER},
+      </if>
     </set>
     where uid = #{uid,jdbcType=BIGINT}
   </update>
@@ -441,7 +456,8 @@
       direction = #{direction,jdbcType=VARCHAR},
       remarks = #{remarks,jdbcType=VARCHAR},
       defensetime = #{defensetime,jdbcType=VARCHAR},
-      defenseplace = #{defenseplace,jdbcType=VARCHAR}
+      defenseplace = #{defenseplace,jdbcType=VARCHAR},
+      kind = #{kind,jdbcType=INTEGER}
     where uid = #{uid,jdbcType=BIGINT}
   </update>
 </mapper>

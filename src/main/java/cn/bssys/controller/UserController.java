@@ -1,6 +1,7 @@
 package cn.bssys.controller;
 
 import cn.bssys.po.BsUser;
+import cn.bssys.po.DataGrid;
 import cn.bssys.po.Page;
 import cn.bssys.service.UserService;
 import cn.bssys.util.ContantKey;
@@ -71,7 +72,10 @@ public class UserController {
     @RequestMapping("/list")
     @ResponseBody
     public String getList(Page page){
-        return JSON.toJSONString(userService.getList(page));
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setRows(userService.getList(page));
+        dataGrid.setTotal(userService.getTotal());
+        return JSON.toJSONString(dataGrid);
     }
 
     @RequiresPermissions("user:*")

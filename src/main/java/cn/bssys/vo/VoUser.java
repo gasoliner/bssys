@@ -11,6 +11,10 @@ public class VoUser extends BsUser {
 
     private String voSex;
 
+    private String voMajor;
+
+    private String voTitle;
+
     public VoUser() {
     }
 
@@ -51,5 +55,21 @@ public class VoUser extends BsUser {
 
     public void setVoSex(String voSex) {
         this.voSex = voSex;
+    }
+
+    public String getVoMajor() {
+        return voMajor;
+    }
+
+    public void setVoMajor(String voMajor) {
+        this.voMajor = voMajor;
+    }
+
+    public String getVoTitle() {
+        return voTitle;
+    }
+
+    public void setVoTitle(String voTitle) {
+        this.voTitle = voTitle;
     }
 }
