@@ -30,6 +30,26 @@ $(function () {
         }
     });
 });
+//教师通过课题按年查询
+$(function () {
+    $('#passedTopic_searchInput').combobox({
+        onChange: function(){
+            $("#dg").datagrid({
+                url:'/user/passtopic/'+$("#passedTopic_searchInput").combobox("getValue")
+            });
+        }
+    });
+});
+//指导时间和地点按年查询
+$(function () {
+    $('#timeAndPlace_searchInput').combobox({
+        onChange: function(){
+            $("#dg").datagrid({
+                url:'/student/timeAndPlace/'+$("#timeAndPlace_searchInput").combobox("getValue")
+            });
+        }
+    });
+});
 
 function perInf1() {
     $.post("/user/personalInfo",{
