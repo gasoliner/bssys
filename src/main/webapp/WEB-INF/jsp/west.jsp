@@ -66,7 +66,7 @@
                             <li data-options="attributes:{'url':'tp_4_selectedTopic'}">课题选择情况</li>
                             <li data-options="attributes:{'url':''}">教师课题统计</li>
                             <li data-options="attributes:{'url':''}">指导时间和地点统计</li>
-                            <li data-options="attributes:{'url':''}">结合科研实际统计</li>
+                            <li data-options="attributes:{'url':'adv_select_research'}">结合科研实际统计</li>
                             <li data-options="attributes:{'url':''}">未选题情况统计</li>
                             <li data-options="attributes:{'url':''}">教师被选课题统计</li>
                             <li data-options="attributes:{'url':''}">毕业设计情况汇总</li>

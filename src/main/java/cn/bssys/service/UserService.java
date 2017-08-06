@@ -20,6 +20,5 @@ public interface UserService {
     public long getTotal();
     public BsUser getUserByEmployenum(String employeenum);
     public List<FrontQueryResult> topicCount(Page page,int year);
-    public BsUser selectByPrimaryKey(Integer id);
-
+    public VoUser selectByPrimaryKey(Long id);
 }

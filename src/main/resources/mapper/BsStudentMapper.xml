@@ -14,7 +14,7 @@
     <result column="college" jdbcType="INTEGER" property="college" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="tid" jdbcType="BIGINT" property="tid" />
     <result column="strongpoint" jdbcType="VARCHAR" property="strongpoint" />
     <result column="topid" jdbcType="INTEGER" property="topid" />
     <result column="salt" jdbcType="VARCHAR" property="salt" />
@@ -122,7 +122,7 @@
       #{grade,jdbcType=VARCHAR}, #{degree,jdbcType=VARCHAR}, #{ischoose,jdbcType=INTEGER}, 
       #{password,jdbcType=VARCHAR}, #{clazz,jdbcType=INTEGER}, #{major,jdbcType=INTEGER}, 
       #{college,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{tid,jdbcType=INTEGER}, #{strongpoint,jdbcType=VARCHAR}, #{topid,jdbcType=INTEGER}, 
+      #{tid,jdbcType=BIGINT}, #{strongpoint,jdbcType=VARCHAR}, #{topid,jdbcType=INTEGER}, 
       #{salt,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.bssys.po.BsStudent">
@@ -215,7 +215,7 @@
         #{phone,jdbcType=VARCHAR},
       </if>
       <if test="tid != null">
-        #{tid,jdbcType=INTEGER},
+        #{tid,jdbcType=BIGINT},
       </if>
       <if test="strongpoint != null">
         #{strongpoint,jdbcType=VARCHAR},
@@ -274,7 +274,7 @@
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
       <if test="record.tid != null">
-        tid = #{record.tid,jdbcType=INTEGER},
+        tid = #{record.tid,jdbcType=BIGINT},
       </if>
       <if test="record.strongpoint != null">
         strongpoint = #{record.strongpoint,jdbcType=VARCHAR},
@@ -304,7 +304,7 @@
       college = #{record.college,jdbcType=INTEGER},
       email = #{record.email,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
-      tid = #{record.tid,jdbcType=INTEGER},
+      tid = #{record.tid,jdbcType=BIGINT},
       strongpoint = #{record.strongpoint,jdbcType=VARCHAR},
       topid = #{record.topid,jdbcType=INTEGER},
       salt = #{record.salt,jdbcType=VARCHAR}
@@ -349,7 +349,7 @@
         phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="tid != null">
-        tid = #{tid,jdbcType=INTEGER},
+        tid = #{tid,jdbcType=BIGINT},
       </if>
       <if test="strongpoint != null">
         strongpoint = #{strongpoint,jdbcType=VARCHAR},
@@ -376,7 +376,7 @@
       college = #{college,jdbcType=INTEGER},
       email = #{email,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      tid = #{tid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=BIGINT},
       strongpoint = #{strongpoint,jdbcType=VARCHAR},
       topid = #{topid,jdbcType=INTEGER},
       salt = #{salt,jdbcType=VARCHAR}

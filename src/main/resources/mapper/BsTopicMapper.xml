@@ -23,7 +23,7 @@
     <result column="total" jdbcType="INTEGER" property="total" />
     <result column="difficulty" jdbcType="INTEGER" property="difficulty" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
-    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="tid" jdbcType="BIGINT" property="tid" />
     <result column="ischoose" jdbcType="INTEGER" property="ischoose" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="choosetime" jdbcType="TIMESTAMP" property="choosetime" />
@@ -138,7 +138,7 @@
       #{gradlink,jdbcType=INTEGER}, #{testpercent,jdbcType=DOUBLE}, #{research,jdbcType=INTEGER}, 
       #{ch,jdbcType=INTEGER}, #{en,jdbcType=INTEGER}, #{innovation,jdbcType=INTEGER}, 
       #{total,jdbcType=INTEGER}, #{difficulty,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, 
-      #{tid,jdbcType=INTEGER}, #{ischoose,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{tid,jdbcType=BIGINT}, #{ischoose,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
       #{choosetime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.bssys.po.BsTopic">
@@ -285,7 +285,7 @@
         #{comment,jdbcType=VARCHAR},
       </if>
       <if test="tid != null">
-        #{tid,jdbcType=INTEGER},
+        #{tid,jdbcType=BIGINT},
       </if>
       <if test="ischoose != null">
         #{ischoose,jdbcType=INTEGER},
@@ -371,7 +371,7 @@
         comment = #{record.comment,jdbcType=VARCHAR},
       </if>
       <if test="record.tid != null">
-        tid = #{record.tid,jdbcType=INTEGER},
+        tid = #{record.tid,jdbcType=BIGINT},
       </if>
       <if test="record.ischoose != null">
         ischoose = #{record.ischoose,jdbcType=INTEGER},
@@ -410,7 +410,7 @@
       total = #{record.total,jdbcType=INTEGER},
       difficulty = #{record.difficulty,jdbcType=INTEGER},
       comment = #{record.comment,jdbcType=VARCHAR},
-      tid = #{record.tid,jdbcType=INTEGER},
+      tid = #{record.tid,jdbcType=BIGINT},
       ischoose = #{record.ischoose,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
       choosetime = #{record.choosetime,jdbcType=TIMESTAMP}
@@ -482,7 +482,7 @@
         comment = #{comment,jdbcType=VARCHAR},
       </if>
       <if test="tid != null">
-        tid = #{tid,jdbcType=INTEGER},
+        tid = #{tid,jdbcType=BIGINT},
       </if>
       <if test="ischoose != null">
         ischoose = #{ischoose,jdbcType=INTEGER},
@@ -518,7 +518,7 @@
       total = #{total,jdbcType=INTEGER},
       difficulty = #{difficulty,jdbcType=INTEGER},
       comment = #{comment,jdbcType=VARCHAR},
-      tid = #{tid,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=BIGINT},
       ischoose = #{ischoose,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
       choosetime = #{choosetime,jdbcType=TIMESTAMP}

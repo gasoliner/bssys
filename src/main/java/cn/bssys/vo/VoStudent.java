@@ -30,6 +30,7 @@ public class VoStudent extends BsStudent {
         this.setSid(student.getSid());
         this.setTid(student.getTid());
         this.setTopid(student.getTopid());
+        this.setSalt(student.getSalt());
     }
 
     public String getVoIschoose() {

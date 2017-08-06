@@ -20,6 +20,16 @@ $(function () {
         }
     });
 });
+//结合科研情况按年查询
+$(function () {
+    $('#research_searchInput').combobox({
+        onChange: function(){
+            $("#dg").datagrid({
+                url:'/topic/research/'+$("#research_searchInput").combobox("getValue")
+            });
+        }
+    });
+});
 
 function perInf1() {
     $.post("/user/personalInfo",{

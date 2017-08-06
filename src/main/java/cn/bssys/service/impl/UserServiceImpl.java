@@ -82,7 +82,7 @@ import java.util.List;
          //根据年度与老师id 创建查询条件，进行查询
             BsTopicExample bsTopicExample = new BsTopicExample();
             BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
-            criteria.andTidEqualTo(Math.toIntExact(bsUser.getUid()));
+            criteria.andTidEqualTo(bsUser.getUid());
             criteria.andYearEqualTo(year);
             Long count =topicService.countByExample(bsTopicExample);
 
@@ -94,7 +94,7 @@ import java.util.List;
     }
 
     @Override
-    public BsUser selectByPrimaryKey(Integer id) {
-        return userMapper.selectByPrimaryKey((long)id);
+    public VoUser selectByPrimaryKey(Long id) {
+        return new VoUser(userMapper.selectByPrimaryKey(id));
     }
 }

@@ -1,12 +1,13 @@
 package cn.bssys.service.impl;
 
 import cn.bssys.mapper.BsTopicMapper;
-import cn.bssys.po.BsTopic;
-import cn.bssys.po.BsTopicExample;
-import cn.bssys.po.Page;
+import cn.bssys.po.*;
+import cn.bssys.service.StudentService;
 import cn.bssys.service.SystemDDLService;
 import cn.bssys.service.TopicService;
+import cn.bssys.service.UserService;
 import cn.bssys.vo.VoTopic;
+import cn.bssys.vo.VoUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,17 @@ import java.util.List;
  * Created by 万洪基 on 2017/6/27.
  */
 @Service("topicService")
-   public class TopicServiceImpl implements TopicService {
+public class TopicServiceImpl implements TopicService {
 
     public long total;
     @Autowired
     BsTopicMapper topicMapper;
     @Autowired
     SystemDDLService systemDDLService;
+    @Autowired
+    StudentService studentService;
+    @Autowired
+    UserService userService;
 
     @Override
     public List<VoTopic> getList(Page page, Integer year) {
@@ -96,6 +101,45 @@ import java.util.List;
     public void delete(Integer id) {
         topicMapper.deleteByPrimaryKey(id);
         return;
+    }
+
+    @Override
+    public List<FrontQueryResult> getResearch(Integer year, Page page) {
+        PageHelper.startPage(page.getPage(),page.getRows());
+        BsTopicExample example = new BsTopicExample();
+        BsTopicExample.Criteria criteria = example.createCriteria();
+        criteria.andYearEqualTo(year);
+        criteria.andSrnameIsNotNull();
+        List<BsTopic> topicList = topicMapper.selectByExample(example);
+        PageInfo<BsTopic> pageInfo = new PageInfo<>(topicList);
+        this.total = pageInfo.getTotal();
+//        vo
+        List<FrontQueryResult> resultList = new ArrayList<>();
+//        遍历topicList，根据topicid寻找学生，根据tid寻找老师
+        for (BsTopic topic:
+                topicList){
+//            根据topicid寻找学生
+            BsStudent student = studentService.getStudentByTopicId(topic.getToid());
+//            根据tid寻找老师
+            VoUser user = userService.selectByPrimaryKey(topic.getTid());
+            FrontQueryResult result = new FrontQueryResult();
+            result.setVar1(systemDDLService.getDDLNameByDDLCode("major",topic.getMajor()).getDdlname());
+            result.setVar2(systemDDLService.getDDLNameByDDLCode("clazz",student.getClazz()).getDdlname());
+            result.setVar3(student.getNumber());
+            result.setVar4(student.getName());
+            result.setVar5(topic.getName());
+            result.setVar6(user.getUsername());
+            result.setVar7(systemDDLService.getDDLNameByDDLCode("title",user.getTitle()).getDdlname());
+            result.setVar8(topic.getSrname());
+            result.setVar9(topic.getComment());
+            resultList.add(result);
+        }
+        return resultList;
+    }
+
+    @Override
+    public Long getTotal() {
+        return total;
     }
 
     @Override

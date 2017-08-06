@@ -86,7 +86,7 @@ import java.util.List;
     }
 
     @Override
-    public List<VoStudent> getStudentByTid(Integer tid) {
+    public List<VoStudent> getStudentByTid(Long tid) {
         BsStudentExample studentExample = new BsStudentExample();
         BsStudentExample.Criteria criteria = studentExample.createCriteria();
         criteria.andTidEqualTo(tid);
@@ -106,7 +106,7 @@ import java.util.List;
     }
 
     @Override
-    public List<FrontQueryResult> myStudentList(Integer tid) {
+    public List<FrontQueryResult> myStudentList(Long tid) {
         List<VoStudent> studentList = getStudentByTid(tid);
         List<FrontQueryResult> frontQueryResultList = new ArrayList<>();
          for(VoStudent student :
@@ -147,8 +147,7 @@ import java.util.List;
             frontQueryResult.setVar5(userService.selectByPrimaryKey(bsStudent.getTid()).getUsername());
             //Date 转为 String类型
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            Date date = new Date();
-            date = topicService.selectByPrimaryKey(bsStudent.getTopid()).getChoosetime();
+            Date date = topicService.selectByPrimaryKey(bsStudent.getTopid()).getChoosetime();
             String str=sdf.format(date);
 
             frontQueryResult.setVar6(str);
@@ -190,5 +189,14 @@ import java.util.List;
         }
         return frontQueryResultList;
     }
+
+    @Override
+    public BsStudent getStudentByTopicId(Integer topicId) {
+        BsStudentExample example = new BsStudentExample();
+        BsStudentExample.Criteria criteria = example.createCriteria();
+        criteria.andTopidEqualTo(topicId);
+        List<BsStudent> studentList = bsStudentMapper.selectByExample(example);
+        return studentList.get(0);
+   }
 
 }

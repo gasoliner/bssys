@@ -1415,52 +1415,52 @@ public class BsTopicExample {
             return (Criteria) this;
         }
 
-        public Criteria andTidEqualTo(Integer value) {
+        public Criteria andTidEqualTo(Long value) {
             addCriterion("tid =", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidNotEqualTo(Integer value) {
+        public Criteria andTidNotEqualTo(Long value) {
             addCriterion("tid <>", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidGreaterThan(Integer value) {
+        public Criteria andTidGreaterThan(Long value) {
             addCriterion("tid >", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andTidGreaterThanOrEqualTo(Long value) {
             addCriterion("tid >=", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidLessThan(Integer value) {
+        public Criteria andTidLessThan(Long value) {
             addCriterion("tid <", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidLessThanOrEqualTo(Integer value) {
+        public Criteria andTidLessThanOrEqualTo(Long value) {
             addCriterion("tid <=", value, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidIn(List<Integer> values) {
+        public Criteria andTidIn(List<Long> values) {
             addCriterion("tid in", values, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidNotIn(List<Integer> values) {
+        public Criteria andTidNotIn(List<Long> values) {
             addCriterion("tid not in", values, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidBetween(Integer value1, Integer value2) {
+        public Criteria andTidBetween(Long value1, Long value2) {
             addCriterion("tid between", value1, value2, "tid");
             return (Criteria) this;
         }
 
-        public Criteria andTidNotBetween(Integer value1, Integer value2) {
+        public Criteria andTidNotBetween(Long value1, Long value2) {
             addCriterion("tid not between", value1, value2, "tid");
             return (Criteria) this;
         }

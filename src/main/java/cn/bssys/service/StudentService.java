@@ -21,13 +21,15 @@ public interface StudentService {
 
     public long getTotal();
 
-    public List<VoStudent> getStudentByTid(Integer tid);
+    public List<VoStudent> getStudentByTid(Long tid);
 
     public VoStudent getObjectByPrimaryKey(int id);
 
-    public List<FrontQueryResult> myStudentList(Integer tid);
+    public List<FrontQueryResult> myStudentList(Long tid);
 
     public List<FrontQueryResult>  selectedTopicList(Page page);
 
     public List<FrontQueryResult>   timePlaceList(Page page,int year);
+
+    public BsStudent getStudentByTopicId(Integer topicId);
 }

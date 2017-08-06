@@ -74,14 +74,14 @@ public class StudentController {
 
     @RequestMapping("/tid/{tid}")
     @ResponseBody
-    public String getStuByTid(@PathVariable Integer tid){
+    public String getStuByTid(@PathVariable Long tid){
         return JSON.toJSONString(studentService.getStudentByTid(tid));
     }
 
 
     @RequestMapping("/mine/{tid}")
     @ResponseBody
-    public String getStudentList(@PathVariable Integer tid){
+    public String getStudentList(@PathVariable Long tid){
         return  JSON.toJSONString(studentService.myStudentList(tid));
     }
 

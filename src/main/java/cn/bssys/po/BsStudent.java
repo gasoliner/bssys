@@ -25,7 +25,7 @@ public class BsStudent {
 
     private String phone;
 
-    private Integer tid;
+    private Long tid;
 
     private String strongpoint;
 
@@ -129,11 +129,11 @@ public class BsStudent {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public Integer getTid() {
+    public Long getTid() {
         return tid;
     }
 
-    public void setTid(Integer tid) {
+    public void setTid(Long tid) {
         this.tid = tid;
     }
 

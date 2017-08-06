@@ -15,6 +15,8 @@ public class VoUser extends BsUser {
 
     private String voTitle;
 
+    private String voKind;
+
     public VoUser() {
     }
 
@@ -39,6 +41,8 @@ public class VoUser extends BsUser {
         this.setSex(user.getSex());
         this.setUsername(user.getUsername());
         this.setUid(user.getUid());
+        this.setKind(user.getKind());
+        this.setTitle(user.getTitle());
     }
 
     public String getVoDep() {
@@ -71,5 +75,13 @@ public class VoUser extends BsUser {
 
     public void setVoTitle(String voTitle) {
         this.voTitle = voTitle;
+    }
+
+    public String getVoKind() {
+        return voKind;
+    }
+
+    public void setVoKind(String voKind) {
+        this.voKind = voKind;
     }
 }

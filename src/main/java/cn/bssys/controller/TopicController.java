@@ -71,4 +71,13 @@ public class TopicController {
         dataGrid.setRows(studentService.selectedTopicList(page));
         return JSON.toJSONString(dataGrid);
     }
+    @RequestMapping("/research/{year}")
+    @ResponseBody
+    public String research(@PathVariable Integer year,Page page) throws Exception {
+        DataGrid dataGrid = new DataGrid();
+        dataGrid.setRows(topicService.getResearch(year,page));
+        dataGrid.setTotal(topicService.getTotal());
+        return JSON.toJSONString(dataGrid);
+    }
+
 }
