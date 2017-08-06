@@ -16,12 +16,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by LENOVO on 2017/8/1.
- */
+
  @Service("studentService")
  public class StudentServiceImpl implements StudentService {
 
@@ -29,10 +26,13 @@ import java.util.List;
 
     @Autowired
     BsStudentMapper bsStudentMapper;
+
     @Autowired
     SystemDDLService systemDDLService;
+
     @Autowired
     BsTopicMapper bsTopicMapper;
+
     @Autowired
     BsUserMapper bsUserMapper;
 
@@ -163,22 +163,6 @@ import java.util.List;
     public List<FrontQueryResult> timePlaceList(Page page, int year) {
         //        设置分页
         PageHelper.startPage(page.getPage(), page.getRows());
-       /* BsStudentExample bsStudentExample = new BsStudentExample();
-        List<BsStudent> bsStudentList = bsStudentMapper.selectByExample(bsStudentExample);
-        PageInfo<BsStudent> pageInfo = new PageInfo<>(bsStudentList);
-        this.total = pageInfo.getTotal();
-        List<FrontQueryResult> frontQueryResultList = new ArrayList<>();
-        for(BsStudent bsStudent :
-                bsStudentList){
-            FrontQueryResult frontQueryResult = new FrontQueryResult();
-            frontQueryResult.setVar1(bsUserMapper.selectByPrimaryKey((long)bsStudent.getTid()).getUsername());
-            frontQueryResult.setVar2(bsStudent.getName());
-            frontQueryResult.setVar3(bsStudent.getNumber());
-            frontQueryResult.setVar4(systemDDLService.getDDLNameByDDLCode("clazz",bsStudent.getClazz()).getDdlname());
-            frontQueryResult.setVar5(bsUserMapper.selectByPrimaryKey((long)bsStudent.getTid()).getDefensetime());
-            frontQueryResult.setVar6(bsUserMapper.selectByPrimaryKey((long)bsStudent.getTid()).getDefenseplace());
-            frontQueryResultList.add(frontQueryResult);
-        }*/
        //根据年度查到课题
         BsTopicExample bsTopicExample = new BsTopicExample();
         BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
@@ -203,11 +187,7 @@ import java.util.List;
             frontQueryResult.setVar5(bsUserMapper.selectByPrimaryKey((long)bsTopic.getTid()).getDefensetime());
             frontQueryResult.setVar6(bsUserMapper.selectByPrimaryKey((long)bsTopic.getTid()).getDefenseplace());
             frontQueryResultList.add(frontQueryResult);
-
-
         }
-
-
         return frontQueryResultList;
     }
 

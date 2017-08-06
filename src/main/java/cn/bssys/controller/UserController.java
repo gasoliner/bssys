@@ -112,13 +112,13 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/passtopic/{year}")
+   /* @RequestMapping(value = "/passtopic/{year}")
     @ResponseBody
     public String passtopic(Page page,@PathVariable int year){
         DataGrid dataGrid = new DataGrid();
         dataGrid.setTotal(userService.getTotal());
         dataGrid.setRows(userService.topicCount(page,year));
         return JSON.toJSONString(dataGrid);
-    }
+    }*/
 
 }

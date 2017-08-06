@@ -3,6 +3,7 @@ package cn.bssys.service.impl;
 import cn.bssys.mapper.BsTopicMapper;
 import cn.bssys.mapper.BsUserMapper;
 import cn.bssys.po.*;
+import cn.bssys.service.SystemDDLService;
 import cn.bssys.service.UserService;
 import cn.bssys.vo.VoUser;
 import com.github.pagehelper.PageHelper;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     BsUserMapper userMapper;
     @Autowired
-    SystemDDLServiceImpl systemDDLService;
+    SystemDDLService systemDDLService;
     @Autowired
     BsTopicMapper bsTopicMapper;
 
