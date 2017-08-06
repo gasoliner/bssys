@@ -1,5 +1,6 @@
 package cn.bssys.service;
 
+import cn.bssys.po.BsTopicExample;
 import cn.bssys.po.BsUser;
 import cn.bssys.po.FrontQueryResult;
 import cn.bssys.po.Page;
@@ -19,5 +20,6 @@ public interface UserService {
     public long getTotal();
     public BsUser getUserByEmployenum(String employeenum);
     public List<FrontQueryResult> topicCount(Page page,int year);
+    public BsUser selectByPrimaryKey(Integer id);
 
 }

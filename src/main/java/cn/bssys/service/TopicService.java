@@ -1,5 +1,7 @@
 package cn.bssys.service;
 
+import cn.bssys.po.BsTopic;
+import cn.bssys.po.BsTopicExample;
 import cn.bssys.po.Page;
 import cn.bssys.vo.VoTopic;
 
@@ -13,4 +15,7 @@ public interface TopicService {
     public int add(VoTopic topic);
     public int update(VoTopic voTopic);
     public void delete(Integer id);
+    public BsTopic selectByPrimaryKey(Integer id);
+    public  List<BsTopic>  selectByExample(BsTopicExample bsTopicExample);
+    public  Long countByExample(BsTopicExample bsTopicExample);
 }

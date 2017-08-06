@@ -4,6 +4,7 @@ import cn.bssys.mapper.BsTopicMapper;
 import cn.bssys.mapper.BsUserMapper;
 import cn.bssys.po.*;
 import cn.bssys.service.SystemDDLService;
+import cn.bssys.service.TopicService;
 import cn.bssys.service.UserService;
 import cn.bssys.vo.VoUser;
 import com.github.pagehelper.PageHelper;
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by 万洪基 on 2017/7/5.
  */
 @Service("userService")
-public class UserServiceImpl implements UserService {
+ public class UserServiceImpl implements UserService {
 
     public long total;
     @Autowired
@@ -26,8 +27,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     SystemDDLService systemDDLService;
     @Autowired
-    BsTopicMapper bsTopicMapper;
-
+    TopicService topicService;
     @Override
     public List<VoUser> getList(Page page) {
         return null;
@@ -84,12 +84,17 @@ public class UserServiceImpl implements UserService {
             BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
             criteria.andTidEqualTo(Math.toIntExact(bsUser.getUid()));
             criteria.andYearEqualTo(year);
-            Long count = bsTopicMapper.countByExample(bsTopicExample);
+            Long count =topicService.countByExample(bsTopicExample);
 
             frontQueryResult.setVar3(String.valueOf(count));
             frontQueryResultList.add(frontQueryResult);
         }
 
         return frontQueryResultList;
+    }
+
+    @Override
+    public BsUser selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey((long)id);
     }
 }

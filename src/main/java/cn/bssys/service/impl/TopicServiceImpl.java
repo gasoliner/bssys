@@ -19,7 +19,7 @@ import java.util.List;
  * Created by 万洪基 on 2017/6/27.
  */
 @Service("topicService")
-public class TopicServiceImpl implements TopicService {
+   public class TopicServiceImpl implements TopicService {
 
     public long total;
     @Autowired
@@ -96,5 +96,20 @@ public class TopicServiceImpl implements TopicService {
     public void delete(Integer id) {
         topicMapper.deleteByPrimaryKey(id);
         return;
+    }
+
+    @Override
+    public BsTopic selectByPrimaryKey(Integer id) {
+        return topicMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<BsTopic> selectByExample(BsTopicExample bsTopicExample) {
+        return topicMapper.selectByExample(bsTopicExample);
+    }
+
+    @Override
+    public Long countByExample(BsTopicExample bsTopicExample) {
+        return topicMapper.countByExample(bsTopicExample);
     }
 }
