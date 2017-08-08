@@ -4,7 +4,11 @@ import cn.bssys.po.BsStudent;
 import cn.bssys.po.FrontQueryResult;
 import cn.bssys.po.Page;
 import cn.bssys.vo.VoStudent;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -32,4 +36,7 @@ public interface StudentService {
     public List<FrontQueryResult>   timePlaceList(Page page,int year);
 
     public BsStudent getStudentByTopicId(Integer topicId);
+
+    public void importToMysql(CommonsMultipartFile file)throws IOException;
+
 }

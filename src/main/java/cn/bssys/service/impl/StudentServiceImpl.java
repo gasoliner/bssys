@@ -11,9 +11,17 @@ import cn.bssys.service.UserService;
 import cn.bssys.vo.VoStudent;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -22,7 +30,7 @@ import java.util.List;
 
 
  @Service("studentService")
- public class StudentServiceImpl implements StudentService {
+  public class StudentServiceImpl implements StudentService {
 
     public long total;
 
@@ -163,10 +171,7 @@ import java.util.List;
         //        设置分页
         PageHelper.startPage(page.getPage(), page.getRows());
        //根据年度查到课题
-        BsTopicExample bsTopicExample = new BsTopicExample();
-        BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
-        criteria.andYearEqualTo(year);
-        List<BsTopic> bsTopicList = topicService.selectByExample(bsTopicExample);
+        List<BsTopic> bsTopicList = topicService.selectByExample(year);
         PageInfo<BsTopic> pageInfo = new PageInfo<>(bsTopicList);
         this.total = pageInfo.getTotal();
         List<FrontQueryResult> frontQueryResultList = new ArrayList<>();
@@ -199,4 +204,77 @@ import java.util.List;
         return studentList.get(0);
    }
 
-}
+     @Override
+     public void importToMysql(CommonsMultipartFile file) throws IOException {
+
+        List<BsStudent> list = readXls(file.getInputStream());
+        for(int i=0;i< list.size();i++){
+            BsStudent bsStudent;
+            bsStudent = list.get(i);
+            bsStudentMapper.insertSelective(bsStudent);
+        }
+     }
+
+     public List<BsStudent> readXls(InputStream inputStream) throws IOException {
+         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(inputStream);
+         BsStudent bsStudent ;
+         List<BsStudent> list = new ArrayList<>();
+
+         for (int numSheet = 0; numSheet < hssfWorkbook.getNumberOfSheets(); numSheet++) {
+             HSSFSheet hssfSheet = hssfWorkbook.getSheetAt(numSheet);
+             if (hssfSheet == null) {
+                 continue;
+             }
+             for (int rowNum = 1; rowNum <= hssfSheet.getLastRowNum(); rowNum++) {
+                 HSSFRow hssfRow = hssfSheet.getRow(rowNum);
+                 if (hssfRow != null) {
+                     bsStudent = new BsStudent();
+                     HSSFCell college = hssfRow.getCell(0);
+                     HSSFCell major = hssfRow.getCell(1);
+                     HSSFCell number = hssfRow.getCell(2);
+                     HSSFCell name = hssfRow.getCell(3);
+                     HSSFCell password = hssfRow.getCell(4);
+                     HSSFCell 问题= hssfRow.getCell(5);
+                     HSSFCell 答案 = hssfRow.getCell(6);
+                     HSSFCell grade = hssfRow.getCell(7);
+                     HSSFCell degree = hssfRow.getCell(8);
+                     HSSFCell clazz = hssfRow.getCell(9);
+                     HSSFCell ischoose = hssfRow.getCell(10);
+                     HSSFCell phone = hssfRow.getCell(11);
+                     HSSFCell email = hssfRow.getCell(12);
+                     HSSFCell strongpoint = hssfRow.getCell(13);
+                     bsStudent.setCollege((int)Double.parseDouble(getValue(college)));
+                     bsStudent.setMajor((int)Double.parseDouble(getValue(major)));
+                     bsStudent.setNumber(getValue(number));
+                     bsStudent.setName(getValue(name));
+                     bsStudent.setPassword(getValue(password));
+                     bsStudent.setGrade(getValue(grade));
+                     bsStudent.setDegree(getValue(degree));
+                     bsStudent.setClazz((int)Double.parseDouble(getValue(clazz)));
+                     bsStudent.setIschoose((int)Double.parseDouble(getValue(ischoose)));
+                     bsStudent.setPhone(getValue(phone));
+                     bsStudent.setEmail(getValue(email));
+                     bsStudent.setStrongpoint(getValue(strongpoint));
+                     list.add(bsStudent);
+
+                 }
+             }
+         }
+         return list;
+     }
+
+     public String getValue(HSSFCell hssfCell) {
+         if (hssfCell.getCellType() == hssfCell.CELL_TYPE_BOOLEAN) {
+
+             return String.valueOf(hssfCell.getBooleanCellValue());
+         } else if (hssfCell.getCellType() == hssfCell.CELL_TYPE_NUMERIC) {
+
+             return String.valueOf(hssfCell.getNumericCellValue());
+         } else {
+
+             return String.valueOf(hssfCell.getStringCellValue());
+         }
+     }
+     }
+
+

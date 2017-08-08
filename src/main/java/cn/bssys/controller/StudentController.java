@@ -11,10 +11,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.IOException;
 
 /**
  * Created by LENOVO on 2017/8/1.
@@ -93,6 +93,18 @@ public class StudentController {
         dataGrid.setTotal(studentService.getTotal());
         dataGrid.setRows(studentService.timePlaceList(page,year));
         return JSON.toJSONString(dataGrid);
+    }
+
+    @RequestMapping("/import")
+    @ResponseBody
+    public String importByExcel (@RequestParam("file")CommonsMultipartFile file) {
+        try {
+            studentService.importToMysql(file);
+            return JSON.toJSONString("successful");
+        }catch (Exception e){
+            e.printStackTrace();
+            return JSON.toJSONString("failed");
+        }
     }
 
 }

@@ -414,3 +414,18 @@ function saveUser(){
         }
     })
 }
+//通过Excel
+function importByExcel() {
+    $("#stu_import_fm").form("submit",{
+        url:'/student/import',
+        success: function (res) {
+            alert(res);
+            $("#stu_import_Dialog").dialog("close");
+            $("#dg").datagrid("reload");
+        }
+    })
+}
+function importByExcel_openDialog() {
+    $("#stu_import_fm").form("clear");
+    $("#stu_import_Dialog").dialog("open").dialog("setTitle","学生添加--批量");
+}
