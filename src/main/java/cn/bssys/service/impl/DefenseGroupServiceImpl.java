@@ -66,4 +66,10 @@ public class DefenseGroupServiceImpl implements DefenseGroupService {
         defengroupMapper.deleteByPrimaryKey(id);
         return;
     }
+
+    @Override
+    public VodefenseGroup getObjectByPrimaryKey(Integer dgid) {
+        VodefenseGroup vodefenseGroup = new VodefenseGroup(defengroupMapper.selectByPrimaryKey(dgid));
+        return vodefenseGroup;
+    }
 }

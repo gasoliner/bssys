@@ -57,19 +57,19 @@ public class TopicServiceImpl implements TopicService {
     }
 
     public VoTopic voProcessing(BsTopic topic){
-        VoTopic voTopic = new VoTopic();
-        voTopic.setToid(topic.getToid());
-        voTopic.setName(topic.getName());
-        voTopic.setExplaining(topic.getExplaining());
-        if (topic.getSrname() != null){
-            voTopic.setSrname(topic.getSrname());
-        }
-        voTopic.setGradlink(topic.getGradlink());
-        voTopic.setTestpercent(topic.getTestpercent());
-        voTopic.setResearch(topic.getResearch());
-        voTopic.setCh(topic.getCh());
-        voTopic.setEn(topic.getEn());
-        voTopic.setComment(topic.getComment());
+        VoTopic voTopic = new VoTopic(topic);
+//        voTopic.setToid(topic.getToid());
+//        voTopic.setName(topic.getName());
+//        voTopic.setExplaining(topic.getExplaining());
+//        if (topic.getSrname() != null){
+//            voTopic.setSrname(topic.getSrname());
+//        }
+//        voTopic.setGradlink(topic.getGradlink());
+//        voTopic.setTestpercent(topic.getTestpercent());
+//        voTopic.setResearch(topic.getResearch());
+//        voTopic.setCh(topic.getCh());
+//        voTopic.setEn(topic.getEn());
+//        voTopic.setComment(topic.getComment());
 
 //        需要可视化的字段
         voTopic.setVoyear(systemDDLService.getDDLNameByDDLCode("year",topic.getYear()).getDdlname());
@@ -143,8 +143,8 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public BsTopic selectByPrimaryKey(Integer id) {
-        return topicMapper.selectByPrimaryKey(id);
+    public VoTopic selectByPrimaryKey(Integer id) {
+        return voProcessing(topicMapper.selectByPrimaryKey(id));
     }
 
     @Override

@@ -7,6 +7,37 @@ import cn.bssys.po.BsTopic;
  */
 public class VoTopic extends BsTopic {
 
+    public VoTopic() {
+    }
+
+    public VoTopic(BsTopic topic) {
+        this.setToid(topic.getToid());
+        this.setCollege(topic.getCollege());
+        this.setMajor(topic.getMajor());
+        this.setYear(topic.getYear());
+        this.setName(topic.getName());
+        this.setExplaining(topic.getExplaining());
+        this.setCategory(topic.getCategory());
+        this.setSrc(topic.getSrc());
+        this.setSrname(topic.getSrname());
+        this.setType(topic.getType());
+        this.setComability(topic.getComability());
+        this.setHandability(topic.getHandability());
+        this.setGradlink(topic.getGradlink());
+        this.setTestpercent(topic.getTestpercent());
+        this.setResearch(topic.getResearch());
+        this.setCh(topic.getCh());
+        this.setEn(topic.getEn());
+        this.setInnovation(topic.getInnovation());
+        this.setTotal(topic.getTotal());
+        this.setDifficulty(topic.getDifficulty());
+        this.setComment(topic.getComment());
+        this.setTid(topic.getTid());
+        this.setIschoose(topic.getIschoose());
+        this.setState(topic.getState());
+        this.setChoosetime(topic.getChoosetime());
+    }
+
     private String vocollege;
 
     private String vomajor;

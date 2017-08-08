@@ -13,4 +13,6 @@ public interface DefenseGroupService {
     public int add(VodefenseGroup vodefenseGroup);
     public int update(VodefenseGroup vodefenseGroup);
     public void delete(Integer id);
+
+    VodefenseGroup getObjectByPrimaryKey(Integer dgid);
 }
