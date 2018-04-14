@@ -19,4 +19,12 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
     <context:component-scan base-package="cn.bssys.service"/>
+
+    <bean id="emailBlockingQueue" class="cn.bssys.queue.EmailBlockingQueue">
+        <!--<constructor-arg name="capacity" value="10"/>-->
+    </bean>
+
+    <bean id="emailSender" class="cn.bssys.util.EmailSender">
+        <constructor-arg name="emailBlockingQueue" ref="emailBlockingQueue"/>
+    </bean>
 </beans>

@@ -4,6 +4,7 @@ import cn.bssys.po.Email;
 import cn.bssys.service.MailService;
 import cn.bssys.service.StudentService;
 import cn.bssys.service.impl.MailServiceImpl;
+import cn.bssys.util.EmailSender;
 import cn.bssys.util.PageUtil;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
