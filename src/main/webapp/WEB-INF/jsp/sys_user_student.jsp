@@ -45,6 +45,7 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newStu()">新建</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editStu()">编辑</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyStu()">删除</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="importByExcel_openDialog()">批量导入</a>
 </div>
 <div id="stuDialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
      closed="true" buttons="#stuForm-buttons">
@@ -120,6 +121,39 @@
     <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveStu()">保存</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
        onclick="javascript:$('#stuDialog').dialog('close')">取消</a>
+</div>
+<div id="stu_import_Dialog" class="easyui-dialog" style="width:500px;height:550px;padding:10px 20px"
+     closed="true" buttons="#stu_import-buttons">
+    <div class="ftitle">通过Excel</div>
+    <form id="stu_import_fm" enctype="multipart/form-data" method="post">
+        <div class="fitem">
+            请确保Excell文件符合下面格式，否则导入错误数据。
+            <ul>
+                <li>
+                    1、存放学生数据的Excell表单名称必须是Sheet1；
+                </li>
+                <li>
+                    2、Sheet1中第一行是标题：学院,专业名称,学号,姓名,密码,问题,答案,年级,类别,班级,状态,电话,邮件,特长；
+                </li>
+                <li>
+                    3、第二行开始是要导入的数据，必须与标题中的内容相对应，不能多不能少；
+                </li>
+                <li>
+                    4、点击下载示例文件
+                </li>
+            </ul>
+
+        </div>
+        <div class="fitem">
+            <label>文件&nbsp;&nbsp;&nbsp;</label>
+            <input name="file" type="file">
+        </div>
+    </form>
+</div>
+<div id="stu_import-buttons">
+    <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="importByExcel()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-cancel"
+       onclick="javascript:$('#stu_import_Dialog').dialog('close')">取消</a>
 </div>
 <div>
     <form id="dfm" method="post">

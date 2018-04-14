@@ -19,6 +19,6 @@ public interface TopicService {
     public List<FrontQueryResult> getResearch(Integer year, Page page);
     public Long getTotal();
     public VoTopic selectByPrimaryKey(Integer id);
-    public List<BsTopic>  selectByExample(BsTopicExample bsTopicExample);
-    public Long countByExample(BsTopicExample bsTopicExample);
+    public List<BsTopic>  selectByExample(int year);
+    public Long countByExample(int year,long uid);
 }

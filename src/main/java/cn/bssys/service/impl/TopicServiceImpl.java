@@ -148,12 +148,19 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public List<BsTopic> selectByExample(BsTopicExample bsTopicExample) {
+    public List<BsTopic> selectByExample(int year) {
+        BsTopicExample bsTopicExample = new BsTopicExample();
+        BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
+        criteria.andYearEqualTo(year);
         return topicMapper.selectByExample(bsTopicExample);
     }
 
     @Override
-    public Long countByExample(BsTopicExample bsTopicExample) {
+    public Long countByExample(int year,long uid) {
+        BsTopicExample bsTopicExample = new BsTopicExample();
+        BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
+        criteria.andTidEqualTo(uid);
+        criteria.andYearEqualTo(year);
         return topicMapper.countByExample(bsTopicExample);
     }
 }

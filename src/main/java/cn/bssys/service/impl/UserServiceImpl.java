@@ -80,12 +80,7 @@ import java.util.List;
             frontQueryResult.setVar1(systemDDLService.getDDLNameByDDLCode("dep",bsUser.getDeptid()).getDdlname());
             frontQueryResult.setVar2(bsUser.getUsername());
          //根据年度与老师id 创建查询条件，进行查询
-            BsTopicExample bsTopicExample = new BsTopicExample();
-            BsTopicExample.Criteria criteria = bsTopicExample.createCriteria();
-            criteria.andTidEqualTo(bsUser.getUid());
-            criteria.andYearEqualTo(year);
-            Long count =topicService.countByExample(bsTopicExample);
-
+            Long count =topicService.countByExample(year,bsUser.getUid());
             frontQueryResult.setVar3(String.valueOf(count));
             frontQueryResultList.add(frontQueryResult);
         }
