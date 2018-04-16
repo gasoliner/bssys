@@ -30,18 +30,15 @@ import java.util.concurrent.TimeUnit;
  public class MailServiceImpl extends Thread implements MailService{
 
     @Autowired
-    EmailSender emailSender;
+    private EmailSender emailSender;
 
-    private EmailBlockingQueue<Email> emailQueue;
-
-    public MailServiceImpl(EmailBlockingQueue emailBlockingQueue) {
-        emailQueue = emailBlockingQueue;
-    }
+    @Autowired
+    private EmailBlockingQueue<Email> emailBlockingQueue;
 
     @Override
     public boolean sendEamil(Email email) {
         try {
-            emailQueue.offer(email,2, TimeUnit.SECONDS);
+            emailBlockingQueue.offer(email,2, TimeUnit.SECONDS);
             if (!emailSender.isRunning()) {
                 emailSender.startSendWork();
             }
